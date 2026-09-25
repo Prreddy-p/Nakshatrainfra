@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nakshatra Infra Estate Operations</title>
+  <script>
+    if (['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)
+        && window.location.port === '5500') {
+      window.location.replace('http://localhost:8080/');
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section class="login-screen" id="login-screen">
+    <div class="login-brand"><span class="brand-dot"></span><span>Nakshatra Infra</span></div>
+    <div class="login-card">
+      <p class="eyebrow">NAKSHATRA INFRA WORKSPACE</p>
+      <h1>Welcome back.</h1>
+      <p class="login-copy">Sign in to manage your property business from one place.</p>
+      <form id="login-form">
+        <label>Email<input name="username" type="email" autocomplete="username" placeholder="you@example.com" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required></label>
+        <label>Role<select name="role" required><option value="">Select your role</option><option>Manager</option><option>Associate</option></select></label>
+        <button type="submit" class="login-button">Open workspace <span>→</span></button>
+        <p class="login-error" id="login-error" aria-live="polite"></p>
+      </form>
+      <p><a href="#forgot-password" id="forgot-password-link">Forgot password?</a></p>
+      <form id="forgot-password-form" hidden>
+        <h2>Reset your password</h2>
+        <label>Registered email<input name="email" type="email" autocomplete="email" required></label>
+        <button type="submit" class="login-button">Email temporary password</button>
+        <p id="forgot-password-message" aria-live="polite"></p>
+        <button type="button" id="back-to-login">Back to sign in</button>
+      </form>
+      <form id="change-password-form" hidden>
+        <h2>Choose a new password</h2>
+        <p>Use at least 8 characters, including uppercase, lowercase, a number, and a special character. No spaces.</p>
+        <label>New password<input name="newPassword" type="password" autocomplete="new-password" minlength="8" required></label>
+        <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required></label>
+        <button type="submit" class="login-button">Save new password</button>
+        <p id="change-password-message" aria-live="polite"></p>
+        <button type="button" id="cancel-password-change">Back to sign in</button>
+      </form>
+      <small class="login-hint">Use your registered email, password, and assigned role.</small>
+    </div>
+  </section>
+  <div class="app-shell" id="app-shell" style="display:none">
+    <aside class="sidebar">
+      <a class="brand-mark" href="#overview" aria-label="Nakshatra Infra home"><span class="brand-dot"></span><span>Nakshatra Infra</span></a>
+      <div class="workspace-switcher">
+        <div class="workspace-avatar">SE</div>
+        <div><strong>Nakshatra Infra</strong><span>Operations team</span></div>
+        <span class="chevron">⌄</span>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <span class="nav-label">Workspace</span>
+        <a class="nav-item active" href="#overview"><span class="nav-icon">◈</span>Overview</a>
+        <a class="nav-item" href="#properties"><span class="nav-icon">▦</span>Properties<span class="nav-count">24</span></a>
+        <a class="nav-item" href="#projects"><span class="nav-icon">▤</span>Projects</a>
+        <a class="nav-item" href="#tasks"><span class="nav-icon">✓</span>Tasks<span class="nav-count warning">5</span></a>
+        <a class="nav-item" href="#calendar"><span class="nav-icon">□</span>Calendar</a>
+        <span class="nav-label second-label">Manage</span>
+        <a class="nav-item" href="#leads"><span class="nav-icon">◌</span>Leads<span class="nav-count" id="lead-nav-count">0</span></a>
+        <a class="nav-item" href="#customers"><span class="nav-icon">◎</span>Customers</a>
+        <a class="nav-item" href="#follow-ups"><span class="nav-icon">↗</span>Follow-ups</a>
+        <a class="nav-item" href="#site-visits"><span class="nav-icon">⌖</span>Site visits</a>
+        <span class="nav-label second-label">Sales &amp; finance</span>
+        <a class="nav-item" href="#bookings"><span class="nav-icon">▣</span>Bookings</a>
+        <a class="nav-item" href="#payments"><span class="nav-icon">₹</span>Payments</a>
+        <a class="nav-item" href="#commissions"><span class="nav-icon">%</span>Commissions</a>
+        <a class="nav-item" href="#expenses"><span class="nav-icon">−</span>Expenses</a>
+        <span class="nav-label second-label">Partners &amp; admin</span>
+        <a class="nav-item" href="#brokers"><span class="nav-icon">◇</span>Brokers &amp; agents</a>
+        <a class="nav-item" href="#users"><span class="nav-icon">◉</span>User management</a>
+        <a class="nav-item" href="#contacts"><span class="nav-icon">◎</span>Contacts</a>
+        <a class="nav-item" href="#reports"><span class="nav-icon">▥</span>Reports</a>
+        <a class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a>
+        <a class="nav-item logout-link" href="#logout"><span class="nav-icon">↪</span>Logout</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="help-card"><span class="help-icon">?</span><div><strong>Need a hand?</strong><span>Visit the help center</span></div><span>↗</span></div>
+        <div class="user-row"><div class="user-avatar">MC</div><div><strong>Monica Chen</strong><span>Administrator</span></div><span class="more">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <button class="mobile-menu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong>Overview</strong></div>
+        <div class="top-actions">
+          <button class="icon-button" aria-label="Search">⌕</button>
+          <button class="icon-button notification" aria-label="Notifications">♢<i></i></button>
+          <button class="quick-add top-logout"><span>↪</span> Logout</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="welcome-row">
+          <div><p class="eyebrow">YOUR WORKSPACE</p><h1 id="welcome-message">Welcome back.</h1><p class="subhead">Manage your leads, customers, site visits, and payments.</p></div>
+        </section>
+        <section class="workspace-tiles" aria-label="Dashboard">
+          <article class="workspace-tile tile-leads">
+            <span class="tile-icon" aria-hidden="true">&#9678;</span>
+            <h2>Leads</h2>
+            <p>Track enquiries and follow up on new opportunities.</p>
+            <button type="button" class="tile-link" id="dashboard-open-leads">View leads <span aria-hidden="true">&rarr;</span></button>
+          </article>
+          <article class="workspace-tile tile-customers">
+            <span class="tile-icon" aria-hidden="true">&#9825;</span>
+            <h2>Customers</h2>
+            <p>Keep customer details and relationships in one place.</p>
+            <button type="button" class="tile-link" id="dashboard-open-customers">View customers <span aria-hidden="true">&rarr;</span></button>
+          </article>
+          <article class="workspace-tile tile-visits">
+            <span class="tile-icon" aria-hidden="true">&#8962;</span>
+            <h2>Site Visits</h2>
+            <p>Plan property visits and keep track of appointments.</p>
+          </article>
+          <article class="workspace-tile tile-payments">
+            <span class="tile-icon" aria-hidden="true">&#8377;</span>
+            <h2>Payments</h2>
+            <p>Stay on top of collections and payment records.</p>
+          </article>
+          <article class="workspace-tile tile-followup">
+            <span class="tile-icon" aria-hidden="true">&#8635;</span>
+            <h2>Followup</h2>
+            <p>Keep track of upcoming calls and customer follow-ups.</p>
+          </article>
+        </section>
+      </div>
+      <section class="lead-page" id="leads-page" aria-labelledby="leads-page-title">
+        <div class="lead-page-header"><div><p class="eyebrow">CRM / LEADS</p><h1 id="leads-page-title">Lead management</h1><p class="subhead">Capture, qualify, and follow every opportunity.</p></div><button class="quick-add add-new-lead"><span>+</span> Add new lead</button></div>
+        <div class="lead-toolbar"><label class="lead-search"><span>⌕</span><input id="lead-search" type="search" placeholder="Search by name, phone, or property"></label><select id="lead-status-filter"><option value="">All statuses</option><option>New</option><option>Contacted</option><option>Interested</option><option>Site Visit</option><option>Negotiation</option><option>Booking</option><option>Won</option><option>Lost</option><option>Follow-up</option></select><select id="lead-category-filter"><option value="">All categories</option><option>Hot</option><option>Warm</option><option>Cold</option></select><span class="lead-result-count" id="lead-result-count">Loading leads...</span></div>
+        <div class="lead-table-panel"><div class="lead-table-head"><span>LEAD</span><span>INTERESTED PROPERTY</span><span>STATUS</span><span>CATEGORY</span><span>FOLLOW-UP</span><span>ACTION</span></div><div class="lead-table-body" id="lead-table-body"><div class="lead-empty">Loading your leads...</div></div></div>
+      </section>
+      <section class="user-page" id="customers-page" aria-labelledby="customers-page-title">
+        <div class="user-page-header"><div><p class="eyebrow">CRM / CUSTOMERS</p><h1 id="customers-page-title">Customers</h1><p class="subhead">Customers converted from leads after advance payment confirmation.</p></div></div>
+        <div class="user-table-panel customer-table-panel">
+          <div class="customer-table-head"><span>CUSTOMER</span><span>CONTACT</span><span>PROPERTY</span><span>CREATED</span><span>LEAD</span></div>
+          <div id="customer-table-body" aria-live="polite"></div>
+        </div>
+      </section>
+      <section class="user-page" id="users-page" aria-labelledby="users-page-title">
+        <div class="user-page-header"><div><p class="eyebrow">ADMINISTRATION / USERS</p><h1 id="users-page-title">User management</h1><p class="subhead">Manage the people who work in your Nakshatra Infra workspace.</p></div><button class="quick-add add-new-user"><span>+</span> Add new user</button></div>
+        <div class="user-table-panel"><div class="user-table-head"><span>USER</span><span>EMAIL ID</span><span>PHONE NUMBER</span><span>ROLE</span><span>ACTION</span></div><div class="user-table-body" id="user-table-body"><div class="lead-empty">Loading users...</div></div></div>
+      </section>
+    </main>
+  </div>
+  <div class="modal-backdrop" aria-hidden="true">
+    <section class="add-modal" role="dialog" aria-modal="true" aria-labelledby="add-title">
+      <div class="modal-header"><div><p class="eyebrow">WORKSPACE ACTION</p><h2 id="add-title">What would you like to add?</h2></div><button class="modal-close" aria-label="Close dialog">×</button></div>
+      <div class="add-options"><button data-action="property"><span>⌂</span><strong>Property</strong><small>Create a listing or off-market record</small></button><button data-action="contact"><span>◎</span><strong>Contact</strong><small>Add a buyer, seller or partner</small></button><button data-action="deal"><span>⌁</span><strong>Deal</strong><small>Start a new opportunity</small></button><button data-action="task"><span>✓</span><strong>Task</strong><small>Assign a follow-up or milestone</small></button></div>
+      <p class="modal-note">New records will be added to your workspace activity.</p>
+    </section>
+  </div>
+  <div class="modal-backdrop lead-modal-backdrop" aria-hidden="true">
+    <section class="add-modal lead-modal" role="dialog" aria-modal="true" aria-labelledby="lead-title">
+      <div class="modal-header"><div><p class="eyebrow">CRM / LEADS</p><h2 id="lead-title">Add a new lead</h2></div><button class="lead-modal-close modal-close" aria-label="Close lead form">×</button></div>
+      <form id="lead-form" class="lead-form">
+        <fieldset class="lead-status-ribbon">
+          <legend>Lead status</legend>
+          <div class="lead-status-path">
+            <div id="lead-status-options" class="lead-status-options"></div>
+            <button type="submit" class="status-path-save"><span aria-hidden="true">&#10003;</span> Mark as current status</button>
+          </div>
+          <p>Select a status, then save your changes.</p>
+        </fieldset>
+        <label>Lead status
+          <select id="lead-status-select">
+            <option>Contacted</option>
+            <option>Interested</option>
+            <option>Followup</option>
+            <option>Site Visit</option>
+            <option>Negotiation Required</option>
+            <option>Advance Paid</option>
+          </select>
+        </label>
+        <div class="form-grid two-columns">
+          <label>Customer name<input name="customerName" required placeholder="e.g. Priya Sharma"></label>
+          <label>Mobile number<input name="mobileNumber" type="tel" placeholder="+91 98765 43210"></label>
+          <label>WhatsApp number<input name="whatsappNumber" type="tel" placeholder="Same as mobile if applicable"></label>
+          <label>Email<input name="email" type="email" placeholder="customer@email.com"></label>
+          <label>Interested property<input name="interestedProperty" placeholder="Property or project name"></label>
+          <label>Preferred location<input name="preferredLocation" placeholder="City or locality"></label>
+          <label>Property type<select name="propertyType"><option value="">Select type</option><option>Plot</option><option>Land</option><option>Apartment</option><option>Villa</option><option>Independent House</option><option>Commercial</option><option>Office</option><option>Shop</option></select></label>
+          <label>Lead source<select name="leadSource"><option>Website</option><option>WhatsApp</option><option>Facebook</option><option>Instagram</option><option>Google</option><option>Referral</option><option>Broker</option><option>Walk-in</option><option>Other</option></select></label>
+          <label>Minimum budget<input name="minimumBudget" type="number" min="0" placeholder="₹ 0"></label>
+          <label>Maximum budget<input name="maximumBudget" type="number" min="0" placeholder="₹ 0"></label>
+          <label>Category<select name="category"><option>Hot</option><option selected>Warm</option><option>Cold</option></select></label>
+          <label>Next follow-up<input name="nextFollowUpDate" type="date"></label>
+        </div>
+        <div class="advance-paid-control">
+          <label><input type="checkbox" name="advancePaidEnabled" id="lead-advance-paid"> Advance Paid</label>
+          <p>Save with Advance Paid checked to confirm conversion to a customer. An existing customer will not be duplicated or removed if you later uncheck this box.</p>
+        </div>
+        <label>Notes<textarea name="notes" rows="3" placeholder="What does this customer need? Add context for the assigned agent."></textarea></label>
+        <section class="lead-payments" aria-labelledby="payment-section-title">
+          <div class="panel-heading"><div><h2 id="payment-section-title">Payment Details</h2><p>Advance and installments for this asset.</p></div><strong id="payment-status" aria-live="polite"></strong></div>
+          <p id="payment-message" aria-live="polite"></p>
+          <fieldset id="payment-editor" disabled>
+            <div class="payment-summary">
+              <label>Total Asset Value (₹)<input id="payment-asset" type="text" inputmode="decimal" placeholder="e.g. 1000000.00" autocomplete="off"></label>
+              <label>Advance Amount (₹)<input id="payment-advance" type="text" inputmode="decimal" value="0" autocomplete="off"></label>
+              <div><span>Total Installments</span><strong id="payment-installments-total">₹0.00</strong></div>
+              <div><span>Total Paid Amount</span><strong id="payment-total">₹0.00</strong></div>
+              <div class="payment-balance"><span>Remaining Amount</span><strong id="payment-remaining">—</strong></div>
+            </div>
+            <div class="payment-installment-heading"><h3>Installments</h3><button type="button" class="secondary-button" id="payment-add">+ Add Installment</button></div>
+            <div id="payment-installments"></div>
+            <p class="payment-help">Enter amounts in rupees with up to two decimal places. Edit installments directly below. Save payments to keep your changes.</p>
+            <div class="payment-actions"><button type="button" class="secondary-button" id="payment-cancel">Cancel</button><button type="button" class="quick-add" id="payment-save">Save payments</button></div>
+          </fieldset>
+        </section>
+        <div class="lead-form-footer"><span class="lead-form-message" aria-live="polite"></span><button type="button" class="danger-button delete-lead">Delete lead</button><button type="button" class="secondary-button lead-cancel">Cancel</button><button type="submit" class="login-button save-lead">Save lead <span>→</span></button></div>
+      </form>
+    </section>
+  </div>
+  <div class="modal-backdrop user-modal-backdrop" aria-hidden="true">
+    <section class="add-modal user-modal" role="dialog" aria-modal="true" aria-labelledby="user-title">
+      <div class="modal-header"><div><p class="eyebrow">ADMINISTRATION / USERS</p><h2 id="user-title">Add new user</h2></div><button class="user-modal-close modal-close" aria-label="Close user form">×</button></div>
+      <form id="user-form" class="user-form">
+        <label>Name<input name="name" required placeholder="e.g. Priya Sharma"></label>
+        <label>Email ID<input name="emailId" required type="email" placeholder="priya@nakshatra.com"></label>
+        <label>Phone number<input name="phoneNumber" type="tel" placeholder="+91 98765 43210"></label>
+        <label>Password<input name="password" required type="password" minlength="6" placeholder="Minimum 6 characters"></label>
+        <label>Role<select name="role" required><option value="">Select role</option><option>Manager</option><option>Associate</option></select></label>
+        <div class="user-form-footer"><span class="user-form-message" aria-live="polite"></span><button type="button" class="secondary-button user-cancel">Cancel</button><button type="submit" class="login-button save-user">Save user <span>→</span></button></div>
+      </form>
+    </section>
+  </div>
+  <script src="js/payments.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
