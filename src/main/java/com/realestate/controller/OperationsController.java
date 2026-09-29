@@ -19,8 +19,25 @@ public class OperationsController {
     @GetMapping("/payments") public List<Payment> payments() { return payments.findAll(); }
     @PostMapping("/payments") public Payment createPayment(@RequestBody Payment payment) { return payments.save(payment); }
     @GetMapping("/tasks") public List<Task> tasks(@RequestParam(required = false) String status) { return status == null ? tasks.findAll() : tasks.findByStatusIgnoreCase(status); }
-    @PostMapping("/tasks") public Task createTask(@RequestBody Task task) { return tasks.save(task); }
-    @PatchMapping("/tasks/{id}") public Task updateTask(@PathVariable Long id, @RequestBody Task task) { task.setStatus(task.getStatus()); task.setTaskName(task.getTaskName()); return tasks.save(task); }
+    @PostMapping("/tasks") public Task createTask(@RequestBody Task task) {
+        if (task.getTaskName() == null || task.getTaskName().isBlank()) throw new IllegalArgumentException("Task name is required");
+        return tasks.save(task);
+    }
+    public record TaskUpdate(String taskName, String status) {}
+    @PatchMapping("/tasks/{id}")
+    public org.springframework.http.ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody TaskUpdate input) {
+        return tasks.findById(id).map(task -> {
+            if (input.taskName() != null) {
+                if (input.taskName().isBlank()) throw new IllegalArgumentException("Task name is required");
+                task.setTaskName(input.taskName());
+            }
+            if (input.status() != null) {
+                if (!java.util.Set.of("Pending", "Completed").contains(input.status())) throw new IllegalArgumentException("Status must be Pending or Completed");
+                task.setStatus(input.status());
+            }
+            return org.springframework.http.ResponseEntity.ok(tasks.save(task));
+        }).orElse(org.springframework.http.ResponseEntity.notFound().build());
+    }
     @GetMapping("/documents") public List<DocumentRecord> documents() { return documents.findAll(); }
     @PostMapping("/documents") public DocumentRecord createDocument(@RequestBody DocumentRecord document) { return documents.save(document); }
 }

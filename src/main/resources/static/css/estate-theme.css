@@ -1,0 +1,148 @@
+/* Nakshatra Infra: forest green, limestone, sage and brushed gold. */
+[data-manager-nav][hidden] { display:none !important; }
+:root {
+  --ink:#203c35; --muted:#63766d; --line:#dce4d9; --canvas:#f3f4ed;
+  --panel:#fffefb; --coral:#26715e; --coral-soft:#e3f0e8;
+  --yellow:#c4a261; --green:#28734e; --nav:#153d33; --nav-muted:#bed0c5;
+  --shadow:0 8px 28px rgba(30,65,48,.07);
+}
+body { background:var(--canvas); color:var(--ink); }
+.main-content,.lead-page.active,.user-page.active {
+  background-color:#f3f4ed;
+  background-image:radial-gradient(ellipse at 95% 0%,#dbe9dd 0,transparent 48%),linear-gradient(135deg,#faf8f0 0%,#f1f5ef 100%);
+}
+.sidebar { background:linear-gradient(160deg,#1c4a3e 0%,#10352e 65%,#122d2a 100%); border-right:1px solid #274f43; }
+.brand-mark { color:#fff8e6; }
+.brand-dot { background:#d8b878; box-shadow:0 0 0 5px #d8b87814; }
+.workspace-switcher { background:#ffffff08; border-color:#ffffff18; border-radius:12px; }
+.workspace-avatar,.user-avatar { background:#d4ba83; color:#173c32; }
+.nav-label { color:#a0b9aa; letter-spacing:1.5px; }
+.nav-item { border:1px solid transparent; }
+.nav-item:hover { background:#ffffff0b; color:#fff7e8; }
+.nav-item.active { background:#ffffff12; border-color:#c6af733d; color:#f6e6bd; box-shadow:inset 3px 0 #d7b779; }
+.nav-count { background:#ffffff12; color:#e1ebdf; }
+.nav-count.warning { background:#b7984b2b; color:#f1d69d; }
+.help-card { background:#ffffff07; border:1px solid #ffffff16; border-radius:12px; }
+.sidebar-footer { border-color:#ffffff15; }
+.topbar { background:#fffefbf2; border-bottom:1px solid #dce4d9; box-shadow:0 3px 16px #24493604; }
+.breadcrumb { color:#687c70; }
+.breadcrumb strong { color:#244d3c; }
+.quick-add,.login-button,.status-path-save {
+  background:#22634f; color:#fff; border-radius:8px; box-shadow:0 4px 10px #1d51301a;
+  transition:background .18s ease,box-shadow .18s ease;
+}
+.quick-add:hover,.login-button:hover,.status-path-save:hover { background:#164735; box-shadow:0 6px 16px #1d513029; }
+.login-button span { color:#e5ca8d; }
+.secondary-button { color:#385d4b; border-color:#ceddce; background:#fcfdf8; border-radius:8px; }
+.secondary-button:hover { background:#e9f1e7; }
+.eyebrow { color:#527059; letter-spacing:1.6px; }
+.subhead { color:#65786a; line-height:1.7; }
+.welcome-row {
+  position:relative; overflow:hidden; isolation:isolate; min-height:235px; padding:40px;
+  border:1px solid #335f4d; border-radius:20px; margin-bottom:28px;
+  background:linear-gradient(110deg,#173f33,#285846); box-shadow:0 16px 32px #25463213;
+}
+.welcome-row::after {
+  content:""; position:absolute; z-index:-1; inset:0;
+  background:url('../images/estate-skyline.svg') right center / auto 110% no-repeat;
+  opacity:.86; pointer-events:none;
+  mask-image:linear-gradient(to right,transparent 35%,#000 65%);
+}
+.welcome-row>div { max-width:65%; }
+.welcome-row .eyebrow { color:#dfc489; }
+.welcome-row h1 { color:#fffaf0; font-size:clamp(25px,2.5vw,37px); letter-spacing:-1px; line-height:1.25; }
+.welcome-row .subhead { color:#d5e2d6; max-width:400px; }
+.workspace-tile { border-radius:16px; border:1px solid #dbe5d9; background:#fffefb; position:relative; overflow:hidden; transition:transform .2s ease,box-shadow .2s ease; }
+.workspace-tile::before { content:""; position:absolute; height:4px; left:0; right:0; top:0; background:var(--tile-accent,#477962); }
+.workspace-tile:hover { transform:translateY(-3px); box-shadow:0 12px 28px #254b3414; }
+.workspace-tile h2 { color:#284d3b; }
+.workspace-tile p { color:#667768; line-height:1.8; }
+.tile-leads { --tile-accent:#417b62; background:linear-gradient(145deg,#fffefb,#edf5ee); }
+.tile-customers { --tile-accent:#b38d49; background:linear-gradient(145deg,#fffefb,#f7f0df); }
+.customer-tile-total { display:flex;align-items:baseline;gap:10px;margin:12px 0;flex-wrap:wrap; }
+.customer-tile-total strong { font-size:34px;line-height:1.1;letter-spacing:-1px;color:#795d26;font-variant-numeric:tabular-nums; }
+.customer-tile-total span { font-size:11px;color:#726447; }
+.tile-leads .customer-tile-total strong { color:#2f664b; }
+.tile-visits .customer-tile-total strong { color:#326568; }
+.tile-payments .customer-tile-total strong { color:#885f28; }
+.tile-followup .customer-tile-total strong { color:#536b34; }
+.tile-visits { --tile-accent:#52898b; background:linear-gradient(145deg,#fffefb,#eaf3f1); }
+.tile-payments { --tile-accent:#b68850; background:linear-gradient(145deg,#fffefb,#f8eedf); }
+.tile-followup { --tile-accent:#758b5d; background:linear-gradient(145deg,#fffefb,#eff2e4); }
+.tile-icon { background:#dcece0; color:#2f664b; }
+.tile-customers .tile-icon { background:#eee2c4; color:#795d26; }
+.tile-visits .tile-icon { background:#d7eae7; color:#326568; }
+.tile-payments .tile-icon { background:#f0dfc4; color:#885f28; }
+.tile-followup .tile-icon { background:#e1e9cf; color:#536b34; }
+.tile-link { color:#285e44; }
+.lead-table-panel,.user-table-panel,.panel { border-radius:12px; background:#fffefc; box-shadow:var(--shadow); }
+.lead-table-head,.user-table-head,.customer-table-head { background:#eaf0e6; color:#50654c; letter-spacing:.6px; }
+.lead-row:hover,.user-row-record:hover,.customer-record:hover { background:#f1f6ed; }
+.lead-person small,.lead-interest small,.user-row-record,.customer-record small { color:#627569; }
+.lead-avatar,.user-record-avatar { background:#e0ebdd; color:#3b6447; }
+.lead-empty,.lead-result-count { color:#637567; }
+.lead-page-header,.user-page-header { border-bottom:1px solid #d8e1d2; padding-bottom:22px; }
+.modal-backdrop { background:rgba(11,32,25,.64); backdrop-filter:blur(5px); }
+.add-modal { background:#fffef9; border:1px solid #dce5d4; border-radius:16px; box-shadow:0 24px 80px #08291d40; }
+.modal-header { border-bottom:1px solid #e2e8db; padding-bottom:18px; }
+.lead-form input,.lead-form select,.lead-form textarea,.user-form input,.user-form select,.login-card input,.login-card select {
+  background:#fafbf5; border-color:#d4dfce; border-radius:7px; color:#294a38;
+}
+.lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus,.user-form input:focus,.user-form select:focus,.login-card input:focus,.login-card select:focus {
+  border-color:#568b6c; box-shadow:0 0 0 3px #387c5015;
+}
+input[type="checkbox"],input[type="radio"] { accent-color:#2a7550; }
+.lead-status-step>span { background:#e5ebdf; color:#47613e; }
+.lead-status-step.is-complete>span { background:#80a980; color:#143821; }
+.lead-status-step input:checked+span { background:#28684b; color:#fff; }
+.lead-category.category-hot { color:#994e31; background:#f9e8db; }
+.advance-paid-control { border-color:#d6e2cb; background:#eff5e8; }
+.lead-payments { background:linear-gradient(135deg,#eef4e8,#f6f2e4); border-color:#d7e2cc; }
+.payment-summary>div,.payment-summary>label,.payment-installment { background:#fffef9; border-color:#dce4d2; }
+.payment-summary .payment-balance { background:#235b41; color:#fff9e4; }
+.payment-summary .payment-balance span { color:#d1e0c9; }
+.login-screen {
+  position:relative; isolation:isolate; overflow:hidden;
+  background:radial-gradient(ellipse at 15% 10%,#346f55 0,transparent 50%),linear-gradient(135deg,#163d30,#0d2924);
+}
+.login-screen::before {
+  content:""; position:absolute; z-index:-1; inset:0; pointer-events:none;
+  background:url('../images/estate-skyline.svg') center bottom / max(1100px,100vw) auto no-repeat; opacity:.3;
+}
+.login-card { background:#fffef8; border:1px solid #d9c9a1; border-top:4px solid #c6a264; border-radius:18px; box-shadow:0 25px 80px #061b1a55; }
+.login-card h1 { color:#234b38; }
+.login-copy,.login-hint { color:#687961; }
+.login-brand { color:#fff1cb; }
+.login-card a { color:#296346; }
+.login-error { color:#ae4031; }
+.saved-record { border-color:#e0e6d8; }
+button:focus-visible,a:focus-visible { outline:2px solid #bc9452; outline-offset:3px; }
+/* Keep the requested solid green, bottom-centred success notifications. */
+.action-toast:not(.action-toast-error) { background:#218344; border-color:#218344; color:white; }
+@media(max-width:1100px) { .welcome-row { padding:30px; } }
+@media(max-width:780px) {
+  .welcome-row { padding:28px 24px; min-height:210px; border-radius:14px; }
+  .welcome-row>div { max-width:100%; }
+  .welcome-row::after { opacity:.25; mask-image:linear-gradient(to right,transparent,#000); }
+  .login-brand { position:static; margin-bottom:26px; }
+  .login-screen { padding:28px 20px; }
+}
+@media(prefers-reduced-motion:reduce) { .workspace-tile,.quick-add,.login-button { transition:none; } .workspace-tile:hover { transform:none; } }
+
+#dashboard-open-followups,#dashboard-open-visits{cursor:pointer}
+#dashboard-open-followups:focus-visible,#dashboard-open-visits:focus-visible{outline:3px solid #536b34;outline-offset:4px}
+#dashboard-open-followups .tile-link,#dashboard-open-visits .tile-link{display:inline-block}
+#dashboard-open-payments{cursor:pointer}
+#dashboard-open-payments:focus-visible{outline:3px solid #885f28;outline-offset:4px}
+#dashboard-open-payments .tile-link{display:inline-block}
+.pending-payment-panel{overflow-x:auto}
+.pending-payment-table{width:100%;min-width:700px;border-collapse:collapse;text-align:left;font-size:12px}
+.pending-payment-table th{padding:16px;background:#eaf0e6;color:#50654c;font-size:11px}
+.pending-payment-table td{padding:16px;border-bottom:1px solid #e0e6d8}
+.pending-payment-table tbody tr:hover{background:#f1f6ed}
+.property-editor{width:min(680px,calc(100vw - 32px));max-height:90vh;margin:auto;padding:26px;overflow:auto;color:var(--ink)}
+.property-editor::backdrop{background:rgba(11,32,25,.64);backdrop-filter:blur(5px)}
+.property-editor textarea{width:100%;border:1px solid #d4dfce;border-radius:7px;background:#fafbf5;padding:10px;color:#294a38;font:inherit;resize:vertical}
+.property-row-actions{white-space:nowrap}.property-row-actions button+button{margin-left:8px;color:#a43e2e}
+.property-form-actions{display:flex;justify-content:flex-end;gap:10px}.property-message{color:#a43e2e;font-size:13px}
+#property-list-count{font-size:12px;color:#637567}

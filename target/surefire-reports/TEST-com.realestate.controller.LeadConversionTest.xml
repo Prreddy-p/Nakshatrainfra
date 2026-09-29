@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.realestate.controller.LeadConversionTest" time="15.35" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.realestate.controller.LeadConversionTest" time="3.193" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -10,6 +10,7 @@
     <property name="net.bytebuddy.experimental" value="true"/>
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="catalina.useNaming" value="false"/>
     <property name="user.timezone" value="Asia/Calcutta"/>
     <property name="org.jboss.logging.provider" value="slf4j"/>
     <property name="os.name" value="Windows 11"/>
@@ -17,7 +18,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\monik\AppData\Local\Temp\surefire1561144684942717403\surefirebooter-20260925181700146_3.jar C:\Users\monik\AppData\Local\Temp\surefire1561144684942717403 2026-09-25T18-16-59_652-jvmRun1 surefire-20260925181700146_1tmp surefire_0-20260925181700146_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\monik\AppData\Local\Temp\surefire13727357027723430419\surefirebooter-20260929123943065_3.jar C:\Users\monik\AppData\Local\Temp\surefire13727357027723430419 2026-09-29T12-39-42_806-jvmRun1 surefire-20260929123943065_1tmp surefire_0-20260929123943065_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\monik\OneDrive\Desktop\Test\target\test-classes;C:\Users\monik\OneDrive\Desktop\Test\target\classes;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-mail\3.3.4\spring-boot-starter-mail-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter\3.3.4\spring-boot-starter-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot\3.3.4\spring-boot-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.3.4\spring-boot-autoconfigure-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.3.4\spring-boot-starter-logging-3.3.4.jar;C:\Users\monik\.m2\repository\ch\qos\logback\logback-classic\1.5.8\logback-classic-1.5.8.jar;C:\Users\monik\.m2\repository\ch\qos\logback\logback-core\1.5.8\logback-core-1.5.8.jar;C:\Users\monik\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.23.1\log4j-to-slf4j-2.23.1.jar;C:\Users\monik\.m2\repository\org\apache\logging\log4j\log4j-api\2.23.1\log4j-api-2.23.1.jar;C:\Users\monik\.m2\repository\org\slf4j\jul-to-slf4j\2.0.16\jul-to-slf4j-2.0.16.jar;C:\Users\monik\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\monik\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\monik\.m2\repository\org\springframework\spring-context-support\6.1.13\spring-context-support-6.1.13.jar;C:\Users\monik\.m2\repository\org\springframework\spring-beans\6.1.13\spring-beans-6.1.13.jar;C:\Users\monik\.m2\repository\org\springframework\spring-context\6.1.13\spring-context-6.1.13.jar;C:\Users\monik\.m2\repository\org\eclipse\angus\jakarta.mail\2.0.3\jakarta.mail-2.0.3.jar;C:\Users\monik\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\monik\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.3.4\spring-boot-starter-web-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.3.4\spring-boot-starter-json-3.3.4.jar;C:\Users\monik\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\monik\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\monik\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\monik\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\monik\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\monik\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.17.2\jackson-module-parameter-names-2.17.2.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.3.4\spring-boot-starter-tomcat-3.3.4.jar;C:\Users\monik\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.30\tomcat-embed-core-10.1.30.jar;C:\Users\monik\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.30\tomcat-embed-websocket-10.1.30.jar;C:\Users\monik\.m2\repository\org\springframework\spring-web\6.1.13\spring-web-6.1.13.jar;C:\Users\monik\.m2\repository\io\micrometer\micrometer-observation\1.13.4\micrometer-observation-1.13.4.jar;C:\Users\monik\.m2\repository\io\micrometer\micrometer-commons\1.13.4\micrometer-commons-1.13.4.jar;C:\Users\monik\.m2\repository\org\springframework\spring-webmvc\6.1.13\spring-webmvc-6.1.13.jar;C:\Users\monik\.m2\repository\org\springframework\spring-expression\6.1.13\spring-expression-6.1.13.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.3.4\spring-boot-starter-data-jpa-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.3.4\spring-boot-starter-aop-3.3.4.jar;C:\Users\monik\.m2\repository\org\aspectj\aspectjweaver\1.9.22.1\aspectjweaver-1.9.22.1.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.3.4\spring-boot-starter-jdbc-3.3.4.jar;C:\Users\monik\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\monik\.m2\repository\org\springframework\spring-jdbc\6.1.13\spring-jdbc-6.1.13.jar;C:\Users\monik\.m2\repository\org\hibernate\orm\hibernate-core\6.5.3.Final\hibernate-core-6.5.3.Final.jar;C:\Users\monik\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\monik\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\monik\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\monik\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\monik\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\monik\.m2\repository\com\fasterxml\classmate\1.7.0\classmate-1.7.0.jar;C:\Users\monik\.m2\repository\net\bytebuddy\byte-buddy\1.14.19\byte-buddy-1.14.19.jar;C:\Users\monik\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\monik\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\monik\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\monik\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\monik\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\monik\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\monik\.m2\repository\org\springframework\data\spring-data-jpa\3.3.4\spring-data-jpa-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\data\spring-data-commons\3.3.4\spring-data-commons-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\spring-orm\6.1.13\spring-orm-6.1.13.jar;C:\Users\monik\.m2\repository\org\springframework\spring-tx\6.1.13\spring-tx-6.1.13.jar;C:\Users\monik\.m2\repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\monik\.m2\repository\org\springframework\spring-aspects\6.1.13\spring-aspects-6.1.13.jar;C:\Users\monik\.m2\repository\com\mysql\mysql-connector-j\8.3.0\mysql-connector-j-8.3.0.jar;C:\Users\monik\.m2\repository\com\h2database\h2\2.2.224\h2-2.2.224.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.3.4\spring-boot-starter-validation-3.3.4.jar;C:\Users\monik\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.30\tomcat-embed-el-10.1.30.jar;C:\Users\monik\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.1.Final\hibernate-validator-8.0.1.Final.jar;C:\Users\monik\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-security\3.3.4\spring-boot-starter-security-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\spring-aop\6.1.13\spring-aop-6.1.13.jar;C:\Users\monik\.m2\repository\org\springframework\security\spring-security-config\6.3.3\spring-security-config-6.3.3.jar;C:\Users\monik\.m2\repository\org\springframework\security\spring-security-core\6.3.3\spring-security-core-6.3.3.jar;C:\Users\monik\.m2\repository\org\springframework\security\spring-security-crypto\6.3.3\spring-security-crypto-6.3.3.jar;C:\Users\monik\.m2\repository\org\springframework\security\spring-security-web\6.3.3\spring-security-web-6.3.3.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.3.4\spring-boot-starter-test-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-test\3.3.4\spring-boot-test-3.3.4.jar;C:\Users\monik\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.3.4\spring-boot-test-autoconfigure-3.3.4.jar;C:\Users\monik\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\monik\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\monik\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\monik\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\monik\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\monik\.m2\repository\org\assertj\assertj-core\3.25.3\assertj-core-3.25.3.jar;C:\Users\monik\.m2\repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\monik\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\monik\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.3\junit-jupiter-5.10.3.jar;C:\Users\monik\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\monik\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\monik\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\monik\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\monik\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\monik\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\monik\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;C:\Users\monik\.m2\repository\org\mockito\mockito-core\5.11.0\mockito-core-5.11.0.jar;C:\Users\monik\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.19\byte-buddy-agent-1.14.19.jar;C:\Users\monik\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\monik\.m2\repository\org\mockito\mockito-junit-jupiter\5.11.0\mockito-junit-jupiter-5.11.0.jar;C:\Users\monik\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\monik\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\monik\.m2\repository\org\springframework\spring-core\6.1.13\spring-core-6.1.13.jar;C:\Users\monik\.m2\repository\org\springframework\spring-jcl\6.1.13\spring-jcl-6.1.13.jar;C:\Users\monik\.m2\repository\org\springframework\spring-test\6.1.13\spring-test-6.1.13.jar;C:\Users\monik\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -34,7 +35,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="windows-1252"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="C:\Users\monik\AppData\Local\Temp\surefire1561144684942717403\surefirebooter-20260925181700146_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\monik\AppData\Local\Temp\surefire13727357027723430419\surefirebooter-20260929123943065_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.7+8-LTS-224"/>
@@ -47,14 +48,16 @@
     <property name="localRepository" value="C:\Users\monik\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\monik\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="catalina.home" value="C:\Users\monik\AppData\Local\Temp\tomcat.0.7321566601920819917"/>
+    <property name="com.zaxxer.hikari.pool_number" value="3"/>
     <property name="java.version" value="17.0.7"/>
     <property name="user.dir" value="C:\Users\monik\OneDrive\Desktop\Test"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="5332"/>
+    <property name="PID" value="29160"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="CONSOLE_LOG_CHARSET" value="windows-1252"/>
+    <property name="catalina.base" value="C:\Users\monik\AppData\Local\Temp\tomcat.0.13253530622190063002"/>
     <property name="native.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk-17\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\monik\.codex\tmp\arg0\codex-arg0zY3dhg;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\monik\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.3\bin;C:\Users\monik\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\monik\AppData\Roaming\npm;C:\Users\monik\tools\apache-maven-3.9.11\bin;C:\Users\monik\tools\apache-maven-3.9.10\bin;C:\Users\monik\tools\apache-maven-3.9.16\bin;c:\Users\monik\.vscode\extensions\openai.chatgpt-26.917.62051-win32-x64\bin\windows-x86_64;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
@@ -64,9 +67,12 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[real-estate-crm] "/>
   </properties>
-  <testcase name="newLeadCanBeCreatedAndConvertedTogether" classname="com.realestate.controller.LeadConversionTest" time="0.582">
-    <system-out><![CDATA[18:17:05.400 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.realestate.controller.LeadConversionTest]: LeadConversionTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:17:05.754 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.realestate.RealEstateApplication for test class com.realestate.controller.LeadConversionTest
+  <testcase name="newLeadCanBeCreatedAndConvertedTogether" classname="com.realestate.controller.LeadConversionTest" time="0.194">
+    <system-out><![CDATA[2026-09-29T12:39:59.593+05:30 DEBUG 29160 --- [real-estate-crm] [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [LeadConversionTest]: using SpringBootContextLoader
+2026-09-29T12:39:59.606+05:30 DEBUG 29160 --- [real-estate-crm] [           main] .b.t.c.SpringBootTestContextBootstrapper : Using ContextCustomizerFactory implementations for test class [LeadConversionTest]: [ImportsContextCustomizerFactory, ExcludeFilterContextCustomizerFactory, HttpGraphQlTesterContextCustomizerFactory, DuplicateJsonObjectContextCustomizerFactory, MockitoContextCustomizerFactory, TestRestTemplateContextCustomizerFactory, WebTestClientContextCustomizerFactory, DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory, OverrideAutoConfigurationContextCustomizerFactory, ObservabilityContextCustomizerFactory, TypeExcludeFiltersContextCustomizerFactory, PropertyMappingContextCustomizerFactory, WebDriverContextCustomizerFactory, MockServerContainerContextCustomizerFactory, DynamicPropertiesContextCustomizerFactory]
+2026-09-29T12:39:59.635+05:30 DEBUG 29160 --- [real-estate-crm] [           main] .b.t.c.SpringBootTestContextBootstrapper : Using ContextCustomizers for test class [LeadConversionTest]: [ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, WebDriverContextCustomizer]
+2026-09-29T12:39:59.661+05:30  INFO 29160 --- [real-estate-crm] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.realestate.RealEstateApplication for test class com.realestate.controller.LeadConversionTest
+2026-09-29T12:39:59.709+05:30 DEBUG 29160 --- [real-estate-crm] [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners for test class [LeadConversionTest]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -77,39 +83,38 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2026-09-25T18:17:06.929+05:30  INFO 5332 --- [real-estate-crm] [           main] c.r.controller.LeadConversionTest        : Starting LeadConversionTest using Java 17.0.7 with PID 5332 (started by monik in C:\Users\monik\OneDrive\Desktop\Test)
-2026-09-25T18:17:06.931+05:30  INFO 5332 --- [real-estate-crm] [           main] c.r.controller.LeadConversionTest        : No active profile set, falling back to 1 default profile: "default"
-2026-09-25T18:17:06.931+05:30 DEBUG 5332 --- [real-estate-crm] [           main] o.s.boot.SpringApplication               : Loading source class com.realestate.RealEstateApplication
-2026-09-25T18:17:08.858+05:30  INFO 5332 --- [real-estate-crm] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-09-25T18:17:08.901+05:30 DEBUG 5332 --- [real-estate-crm] [           main] o.s.b.a.AutoConfigurationPackages        : @EnableAutoConfiguration was declared on a class in the package 'com.realestate'. Automatic @Repository and @Entity scanning is enabled.
-2026-09-25T18:17:09.066+05:30  INFO 5332 --- [real-estate-crm] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 190 ms. Found 9 JPA repository interfaces.
-2026-09-25T18:17:10.596+05:30  INFO 5332 --- [real-estate-crm] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-09-25T18:17:10.764+05:30  INFO 5332 --- [real-estate-crm] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-09-25T18:17:10.879+05:30  INFO 5332 --- [real-estate-crm] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-09-25T18:17:11.162+05:30  INFO 5332 --- [real-estate-crm] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-09-25T18:17:11.229+05:30  INFO 5332 --- [real-estate-crm] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-09-25T18:17:11.612+05:30  INFO 5332 --- [real-estate-crm] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:conversion-test user=SA
-2026-09-25T18:17:11.629+05:30  INFO 5332 --- [real-estate-crm] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-09-25T18:17:13.565+05:30  INFO 5332 --- [real-estate-crm] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:39:59.791+05:30  INFO 29160 --- [real-estate-crm] [           main] c.r.controller.LeadConversionTest        : Starting LeadConversionTest using Java 17.0.7 with PID 29160 (started by monik in C:\Users\monik\OneDrive\Desktop\Test)
+2026-09-29T12:39:59.792+05:30  INFO 29160 --- [real-estate-crm] [           main] c.r.controller.LeadConversionTest        : No active profile set, falling back to 1 default profile: "default"
+2026-09-29T12:39:59.792+05:30 DEBUG 29160 --- [real-estate-crm] [           main] o.s.boot.SpringApplication               : Loading source class com.realestate.RealEstateApplication
+2026-09-29T12:40:00.022+05:30  INFO 29160 --- [real-estate-crm] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-29T12:40:00.023+05:30 DEBUG 29160 --- [real-estate-crm] [           main] o.s.b.a.AutoConfigurationPackages        : @EnableAutoConfiguration was declared on a class in the package 'com.realestate'. Automatic @Repository and @Entity scanning is enabled.
+2026-09-29T12:40:00.056+05:30  INFO 29160 --- [real-estate-crm] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 9 JPA repository interfaces.
+2026-09-29T12:40:00.178+05:30  INFO 29160 --- [real-estate-crm] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-29T12:40:00.181+05:30  INFO 29160 --- [real-estate-crm] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-29T12:40:00.192+05:30  INFO 29160 --- [real-estate-crm] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-29T12:40:00.193+05:30  INFO 29160 --- [real-estate-crm] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-09-29T12:40:00.196+05:30  INFO 29160 --- [real-estate-crm] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:conversion-test user=SA
+2026-09-29T12:40:00.196+05:30  INFO 29160 --- [real-estate-crm] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-09-29T12:40:00.456+05:30  INFO 29160 --- [real-estate-crm] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-29T12:40:00.458+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists bookings cascade 
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.459+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists customers cascade 
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.460+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists documents cascade 
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.460+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists leads cascade 
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.460+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists password_resets cascade 
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.460+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists payments cascade 
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.460+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists properties cascade 
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.460+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists tasks cascade 
-2026-09-25T18:17:13.595+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.460+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     drop table if exists user_accounts cascade 
-2026-09-25T18:17:13.612+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.463+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table bookings (
         booking_amount numeric(38,2),
         booking_date date,
@@ -124,7 +129,7 @@
         status varchar(255),
         primary key (id)
     )
-2026-09-25T18:17:13.629+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.467+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table customers (
         created_date date,
         id bigint generated by default as identity,
@@ -135,7 +140,7 @@
         name varchar(255),
         primary key (id)
     )
-2026-09-25T18:17:13.629+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.486+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table documents (
         id bigint generated by default as identity,
         uploaded_at timestamp(6),
@@ -146,14 +151,16 @@
         status varchar(255),
         primary key (id)
     )
-2026-09-25T18:17:13.629+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.489+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table leads (
         advance_paid_enabled boolean,
         created_date date,
         maximum_budget numeric(38,2),
         minimum_budget numeric(38,2),
         next_follow_up_date date,
+        total_asset_value numeric(15,2),
         id bigint generated by default as identity,
+        payment_revision bigint,
         notes varchar(2000),
         assigned_agent varchar(255),
         category varchar(255),
@@ -168,7 +175,7 @@
         whatsapp_number varchar(255),
         primary key (id)
     )
-2026-09-25T18:17:13.629+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.491+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table password_resets (
         otp_attempts integer not null,
         consumed_at timestamp(6) with time zone,
@@ -183,12 +190,13 @@
         encrypted_otp varchar(512),
         primary key (id)
     )
-2026-09-25T18:17:13.629+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.494+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table payments (
         amount numeric(38,2),
         due_date date,
         paid_date date,
         id bigint generated by default as identity,
+        lead_id bigint,
         notes varchar(1000),
         booking varchar(255),
         customer varchar(255),
@@ -200,7 +208,7 @@
         transaction_number varchar(255),
         primary key (id)
     )
-2026-09-25T18:17:13.629+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.497+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table properties (
         bathrooms integer,
         bedrooms integer,
@@ -226,7 +234,7 @@
         survey_number varchar(255),
         primary key (id)
     )
-2026-09-25T18:17:13.645+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.503+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table tasks (
         due_date date,
         id bigint generated by default as identity,
@@ -239,7 +247,7 @@
         task_name varchar(255) not null,
         primary key (id)
     )
-2026-09-25T18:17:13.645+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.504+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     create table user_accounts (
         id bigint generated by default as identity,
         password varchar(100) not null,
@@ -249,42 +257,46 @@
         role varchar(255) not null,
         primary key (id)
     )
-2026-09-25T18:17:13.645+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.506+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     alter table if exists bookings 
        add constraint FKj94ktyvmw1driaufktolkpj1c 
        foreign key (property_id) 
        references properties
-2026-09-25T18:17:13.662+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.510+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     alter table if exists customers 
        add constraint FKka6vo972x5m28w6k1ju1i1k0d 
        foreign key (lead_id) 
        references leads
-2026-09-25T18:17:13.662+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:00.512+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     alter table if exists password_resets 
        add constraint FKru66a49mn5hx5nj5jvg954jj5 
        foreign key (user_id) 
        references user_accounts
-2026-09-25T18:17:13.679+05:30  INFO 5332 --- [real-estate-crm] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-09-25T18:17:14.347+05:30  INFO 5332 --- [real-estate-crm] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-09-25T18:17:16.298+05:30  WARN 5332 --- [real-estate-crm] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-09-29T12:40:00.520+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    alter table if exists payments 
+       add constraint FK8823mnbfex3xhmgxacd4n9t0t 
+       foreign key (lead_id) 
+       references leads
+2026-09-29T12:40:00.540+05:30  INFO 29160 --- [real-estate-crm] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-29T12:40:01.232+05:30  WARN 29160 --- [real-estate-crm] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 2c248c30-ab91-4abe-8ff1-47bbca3e3ec2
+Using generated security password: 11c6a31e-f12b-40c4-a140-b3cff7b0eed6
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-09-25T18:17:16.332+05:30  INFO 5332 --- [real-estate-crm] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-09-25T18:17:16.579+05:30  INFO 5332 --- [real-estate-crm] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
-2026-09-25T18:17:18.013+05:30 DEBUG 5332 --- [real-estate-crm] [           main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, hiddenHttpMethodFilter urls=[/*] order=-10000, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
-2026-09-25T18:17:18.013+05:30 DEBUG 5332 --- [real-estate-crm] [           main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: 
-2026-09-25T18:17:18.030+05:30 DEBUG 5332 --- [real-estate-crm] [           main] s.b.w.s.f.OrderedCharacterEncodingFilter : Filter 'characterEncodingFilter' configured for use
-2026-09-25T18:17:18.030+05:30 DEBUG 5332 --- [real-estate-crm] [           main] .s.b.w.s.f.OrderedHiddenHttpMethodFilter : Filter 'hiddenHttpMethodFilter' configured for use
-2026-09-25T18:17:18.030+05:30 DEBUG 5332 --- [real-estate-crm] [           main] o.s.b.w.s.f.OrderedFormContentFilter     : Filter 'formContentFilter' configured for use
-2026-09-25T18:17:18.030+05:30 DEBUG 5332 --- [real-estate-crm] [           main] o.s.b.w.s.f.OrderedRequestContextFilter  : Filter 'requestContextFilter' configured for use
-2026-09-25T18:17:18.030+05:30 DEBUG 5332 --- [real-estate-crm] [           main] .DelegatingFilterProxyRegistrationBean$1 : Filter 'springSecurityFilterChain' configured for use
-2026-09-25T18:17:18.030+05:30  INFO 5332 --- [real-estate-crm] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-09-25T18:17:18.030+05:30  INFO 5332 --- [real-estate-crm] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-09-25T18:17:18.030+05:30  INFO 5332 --- [real-estate-crm] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-09-25T18:17:18.096+05:30 DEBUG 5332 --- [real-estate-crm] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2026-09-29T12:40:01.232+05:30  INFO 29160 --- [real-estate-crm] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-09-29T12:40:01.258+05:30  INFO 29160 --- [real-estate-crm] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-29T12:40:01.642+05:30 DEBUG 29160 --- [real-estate-crm] [           main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: springSecurityFilterChain urls=[/*] order=-100, characterEncodingFilter urls=[/*] order=-2147483648, hiddenHttpMethodFilter urls=[/*] order=-10000, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2026-09-29T12:40:01.642+05:30 DEBUG 29160 --- [real-estate-crm] [           main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: 
+2026-09-29T12:40:01.664+05:30 DEBUG 29160 --- [real-estate-crm] [           main] s.b.w.s.f.OrderedCharacterEncodingFilter : Filter 'characterEncodingFilter' configured for use
+2026-09-29T12:40:01.665+05:30 DEBUG 29160 --- [real-estate-crm] [           main] .s.b.w.s.f.OrderedHiddenHttpMethodFilter : Filter 'hiddenHttpMethodFilter' configured for use
+2026-09-29T12:40:01.665+05:30 DEBUG 29160 --- [real-estate-crm] [           main] o.s.b.w.s.f.OrderedFormContentFilter     : Filter 'formContentFilter' configured for use
+2026-09-29T12:40:01.665+05:30 DEBUG 29160 --- [real-estate-crm] [           main] o.s.b.w.s.f.OrderedRequestContextFilter  : Filter 'requestContextFilter' configured for use
+2026-09-29T12:40:01.665+05:30 DEBUG 29160 --- [real-estate-crm] [           main] .DelegatingFilterProxyRegistrationBean$1 : Filter 'springSecurityFilterChain' configured for use
+2026-09-29T12:40:01.665+05:30  INFO 29160 --- [real-estate-crm] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-29T12:40:01.667+05:30  INFO 29160 --- [real-estate-crm] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-29T12:40:01.670+05:30  INFO 29160 --- [real-estate-crm] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2026-09-29T12:40:01.678+05:30 DEBUG 29160 --- [real-estate-crm] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 
 ============================
@@ -1450,187 +1462,89 @@ Unconditional classes:
 
 
 
-2026-09-25T18:17:18.096+05:30  INFO 5332 --- [real-estate-crm] [           main] c.r.controller.LeadConversionTest        : Started LeadConversionTest in 11.998 seconds (process running for 17.635)
-2026-09-25T18:17:18.112+05:30 DEBUG 5332 --- [real-estate-crm] [           main] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
-2026-09-25T18:17:18.416+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:01.683+05:30  INFO 29160 --- [real-estate-crm] [           main] c.r.controller.LeadConversionTest        : Started LeadConversionTest in 1.938 seconds (process running for 18.46)
+2026-09-29T12:40:01.685+05:30 DEBUG 29160 --- [real-estate-crm] [           main] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2026-09-29T12:40:01.690+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         count(*) 
     from
         properties p1_0
-2026-09-25T18:17:18.529+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:01.695+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     insert 
     into
         properties
         (address, bathrooms, bedrooms, city, description, facing, image_url, location, mobile_number, owner_name, plot_number, price, price_per_sq_ft, project_name, property_id, property_name, property_size, property_type, state, status, survey_number, id) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
-2026-09-25T18:17:18.596+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:01.705+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     insert 
     into
         properties
         (address, bathrooms, bedrooms, city, description, facing, image_url, location, mobile_number, owner_name, plot_number, price, price_per_sq_ft, project_name, property_id, property_name, property_size, property_type, state, status, survey_number, id) 
     values
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
-2026-09-25T18:17:18.596+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:01.711+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         count(*) 
     from
         leads l1_0
-2026-09-25T18:17:18.596+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:01.714+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     insert 
     into
         leads
-        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, preferred_location, property_type, whatsapp_number, id) 
+        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, payment_revision, preferred_location, property_type, total_asset_value, whatsapp_number, id) 
     values
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
-2026-09-25T18:17:18.612+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:01.721+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         count(*) 
     from
         user_accounts ua1_0
-2026-09-25T18:17:18.982+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:01.804+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     insert 
     into
         user_accounts
         (email_id, name, password, phone_number, role, id) 
     values
         (?, ?, ?, ?, ?, default)
-2026-09-25T18:17:18.982+05:30 DEBUG 5332 --- [real-estate-crm] [           main] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
-2026-09-25T18:17:19.379+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:01.808+05:30 DEBUG 29160 --- [real-estate-crm] [           main] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2026-09-29T12:40:01.924+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     insert 
     into
         leads
-        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, preferred_location, property_type, whatsapp_number, id) 
+        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, payment_revision, preferred_location, property_type, total_asset_value, whatsapp_number, id) 
     values
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
-2026-09-25T18:17:19.379+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:01.940+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:01.943+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     insert 
     into
-        customers
-        (created_date, email, interested_property, lead_id, mobile_number, name, id) 
+        payments
+        (amount, booking, customer, due_date, lead_id, notes, paid_date, payment_mode, payment_type, property, receipt_number, status, transaction_number, id) 
     values
-        (?, ?, ?, ?, ?, ?, default)
-2026-09-25T18:17:19.601+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    select
-        (count(c1_0.id)>0) 
-    from
-        customers c1_0 
-    where
-        c1_0.lead_id=?
-]]></system-out>
-  </testcase>
-  <testcase name="missingConfirmationDoesNotSaveOrConvert" classname="com.realestate.controller.LeadConversionTest" time="0.182">
-    <system-out><![CDATA[2026-09-25T18:17:19.630+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    insert 
-    into
-        leads
-        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, preferred_location, property_type, whatsapp_number, id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
-2026-09-25T18:17:19.701+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    select
-        l1_0.id,
-        l1_0.advance_paid_enabled,
-        l1_0.assigned_agent,
-        l1_0.category,
-        l1_0.created_date,
-        l1_0.customer_name,
-        l1_0.email,
-        l1_0.interested_property,
-        l1_0.lead_source,
-        l1_0.lead_status,
-        l1_0.maximum_budget,
-        l1_0.minimum_budget,
-        l1_0.mobile_number,
-        l1_0.next_follow_up_date,
-        l1_0.notes,
-        l1_0.preferred_location,
-        l1_0.property_type,
-        l1_0.whatsapp_number 
-    from
-        leads l1_0 
-    where
-        l1_0.id=? for update
-2026-09-25T18:17:19.715+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    select
-        (count(c1_0.id)>0) 
-    from
-        customers c1_0 
-    where
-        c1_0.lead_id=?
-2026-09-25T18:17:19.747+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    select
-        (count(c1_0.id)>0) 
-    from
-        customers c1_0 
-    where
-        c1_0.lead_id=?
-2026-09-25T18:17:19.810+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    select
-        l1_0.id,
-        l1_0.advance_paid_enabled,
-        l1_0.assigned_agent,
-        l1_0.category,
-        l1_0.created_date,
-        l1_0.customer_name,
-        l1_0.email,
-        l1_0.interested_property,
-        l1_0.lead_source,
-        l1_0.lead_status,
-        l1_0.maximum_budget,
-        l1_0.minimum_budget,
-        l1_0.mobile_number,
-        l1_0.next_follow_up_date,
-        l1_0.notes,
-        l1_0.preferred_location,
-        l1_0.property_type,
-        l1_0.whatsapp_number 
-    from
-        leads l1_0 
-    where
-        l1_0.id=?
-]]></system-out>
-  </testcase>
-  <testcase name="confirmedConversionPersistsAndDoesNotDuplicate" classname="com.realestate.controller.LeadConversionTest" time="0.451">
-    <system-out><![CDATA[2026-09-25T18:17:19.812+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    insert 
-    into
-        leads
-        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, preferred_location, property_type, whatsapp_number, id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
-2026-09-25T18:17:19.829+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    select
-        l1_0.id,
-        l1_0.advance_paid_enabled,
-        l1_0.assigned_agent,
-        l1_0.category,
-        l1_0.created_date,
-        l1_0.customer_name,
-        l1_0.email,
-        l1_0.interested_property,
-        l1_0.lead_source,
-        l1_0.lead_status,
-        l1_0.maximum_budget,
-        l1_0.minimum_budget,
-        l1_0.mobile_number,
-        l1_0.next_follow_up_date,
-        l1_0.notes,
-        l1_0.preferred_location,
-        l1_0.property_type,
-        l1_0.whatsapp_number 
-    from
-        leads l1_0 
-    where
-        l1_0.id=? for update
-2026-09-25T18:17:19.829+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    select
-        (count(c1_0.id)>0) 
-    from
-        customers c1_0 
-    where
-        c1_0.lead_id=?
-2026-09-25T18:17:19.871+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:01.952+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     update
         leads 
     set
@@ -1648,31 +1562,38 @@ Unconditional classes:
         mobile_number=?,
         next_follow_up_date=?,
         notes=?,
+        payment_revision=?,
         preferred_location=?,
         property_type=?,
+        total_asset_value=?,
         whatsapp_number=? 
     where
         id=?
-2026-09-25T18:17:19.886+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:01.956+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     insert 
     into
         customers
         (created_date, email, interested_property, lead_id, mobile_number, name, id) 
     values
         (?, ?, ?, ?, ?, ?, default)
-2026-09-25T18:17:20.013+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
-    select
-        count(*) 
-    from
-        customers c1_0
-2026-09-25T18:17:20.013+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.020+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         (count(c1_0.id)>0) 
     from
         customers c1_0 
     where
         c1_0.lead_id=?
-2026-09-25T18:17:20.029+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+]]></system-out>
+  </testcase>
+  <testcase name="conversionRespectsExistingAssetValueAndPreservesInstallments" classname="com.realestate.controller.LeadConversionTest" time="0.259">
+    <system-out><![CDATA[2026-09-29T12:40:02.045+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        leads
+        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, payment_revision, preferred_location, property_type, total_asset_value, whatsapp_number, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.078+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         l1_0.id,
         l1_0.advance_paid_enabled,
@@ -1689,14 +1610,1342 @@ Unconditional classes:
         l1_0.mobile_number,
         l1_0.next_follow_up_date,
         l1_0.notes,
+        l1_0.payment_revision,
         l1_0.preferred_location,
         l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.088+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.090+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        payments
+        (amount, booking, customer, due_date, lead_id, notes, paid_date, payment_mode, payment_type, property, receipt_number, status, transaction_number, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.092+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.095+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.110+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.114+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.120+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.123+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.137+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.144+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.146+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.149+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.156+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.158+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        payments
+        (amount, booking, customer, due_date, lead_id, notes, paid_date, payment_mode, payment_type, property, receipt_number, status, transaction_number, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.160+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.161+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        customers
+        (created_date, email, interested_property, lead_id, mobile_number, name, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.172+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.186+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+]]></system-out>
+  </testcase>
+  <testcase name="missingConfirmationDoesNotSaveOrConvert" classname="com.realestate.controller.LeadConversionTest" time="0.031">
+    <system-out><![CDATA[2026-09-29T12:40:02.305+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        leads
+        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, payment_revision, preferred_location, property_type, total_asset_value, whatsapp_number, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.311+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.314+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.323+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.326+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
         l1_0.whatsapp_number 
     from
         leads l1_0 
     where
         l1_0.id=?
-2026-09-25T18:17:20.065+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+]]></system-out>
+  </testcase>
+  <testcase name="invalidAdvanceRollsBackLeadChangesAndConversion" classname="com.realestate.controller.LeadConversionTest" time="0.171">
+    <system-out><![CDATA[2026-09-29T12:40:02.340+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        leads
+        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, payment_revision, preferred_location, property_type, total_asset_value, whatsapp_number, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.345+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.351+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.352+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.363+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.368+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=?
+2026-09-29T12:40:02.373+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.376+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.385+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.387+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.388+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.391+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.393+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=?
+2026-09-29T12:40:02.397+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.402+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.407+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.410+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.411+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.416+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.422+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=?
+2026-09-29T12:40:02.429+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.437+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.445+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.452+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.453+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.470+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.471+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=?
+2026-09-29T12:40:02.474+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.477+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.486+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.487+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.489+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.492+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.493+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=?
+2026-09-29T12:40:02.497+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.503+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+]]></system-out>
+  </testcase>
+  <testcase name="confirmedConversionPersistsAndDoesNotDuplicate" classname="com.realestate.controller.LeadConversionTest" time="0.215">
+    <system-out><![CDATA[2026-09-29T12:40:02.512+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        leads
+        (advance_paid_enabled, assigned_agent, category, created_date, customer_name, email, interested_property, lead_source, lead_status, maximum_budget, minimum_budget, mobile_number, next_follow_up_date, notes, payment_revision, preferred_location, property_type, total_asset_value, whatsapp_number, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.522+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.524+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.526+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.529+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.535+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        payments
+        (amount, booking, customer, due_date, lead_id, notes, paid_date, payment_mode, payment_type, property, receipt_number, status, transaction_number, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.537+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    update
+        leads 
+    set
+        advance_paid_enabled=?,
+        assigned_agent=?,
+        category=?,
+        created_date=?,
+        customer_name=?,
+        email=?,
+        interested_property=?,
+        lead_source=?,
+        lead_status=?,
+        maximum_budget=?,
+        minimum_budget=?,
+        mobile_number=?,
+        next_follow_up_date=?,
+        notes=?,
+        payment_revision=?,
+        preferred_location=?,
+        property_type=?,
+        total_asset_value=?,
+        whatsapp_number=? 
+    where
+        id=?
+2026-09-29T12:40:02.539+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    insert 
+    into
+        customers
+        (created_date, email, interested_property, lead_id, mobile_number, name, id) 
+    values
+        (?, ?, ?, ?, ?, ?, default)
+2026-09-29T12:40:02.544+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        customers c1_0
+2026-09-29T12:40:02.548+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        (count(c1_0.id)>0) 
+    from
+        customers c1_0 
+    where
+        c1_0.lead_id=?
+2026-09-29T12:40:02.556+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.561+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
+2026-09-29T12:40:02.583+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=?
+2026-09-29T12:40:02.592+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         c1_0.id,
         c1_0.created_date,
@@ -1707,7 +2956,7 @@ Unconditional classes:
         c1_0.name 
     from
         customers c1_0
-2026-09-25T18:17:20.157+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.634+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         l1_0.id,
         l1_0.advance_paid_enabled,
@@ -1724,21 +2973,23 @@ Unconditional classes:
         l1_0.mobile_number,
         l1_0.next_follow_up_date,
         l1_0.notes,
+        l1_0.payment_revision,
         l1_0.preferred_location,
         l1_0.property_type,
+        l1_0.total_asset_value,
         l1_0.whatsapp_number 
     from
         leads l1_0 
     where
         l1_0.id=? for update
-2026-09-25T18:17:20.162+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.636+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         (count(c1_0.id)>0) 
     from
         customers c1_0 
     where
         c1_0.lead_id=?
-2026-09-25T18:17:20.181+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.648+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         l1_0.id,
         l1_0.advance_paid_enabled,
@@ -1755,21 +3006,23 @@ Unconditional classes:
         l1_0.mobile_number,
         l1_0.next_follow_up_date,
         l1_0.notes,
+        l1_0.payment_revision,
         l1_0.preferred_location,
         l1_0.property_type,
+        l1_0.total_asset_value,
         l1_0.whatsapp_number 
     from
         leads l1_0 
     where
         l1_0.id=? for update
-2026-09-25T18:17:20.181+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.653+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         (count(c1_0.id)>0) 
     from
         customers c1_0 
     where
         c1_0.lead_id=?
-2026-09-25T18:17:20.196+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.655+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     update
         leads 
     set
@@ -1787,17 +3040,19 @@ Unconditional classes:
         mobile_number=?,
         next_follow_up_date=?,
         notes=?,
+        payment_revision=?,
         preferred_location=?,
         property_type=?,
+        total_asset_value=?,
         whatsapp_number=? 
     where
         id=?
-2026-09-25T18:17:20.196+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.659+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         count(*) 
     from
         customers c1_0
-2026-09-25T18:17:20.196+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.660+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         l1_0.id,
         l1_0.advance_paid_enabled,
@@ -1814,14 +3069,16 @@ Unconditional classes:
         l1_0.mobile_number,
         l1_0.next_follow_up_date,
         l1_0.notes,
+        l1_0.payment_revision,
         l1_0.preferred_location,
         l1_0.property_type,
+        l1_0.total_asset_value,
         l1_0.whatsapp_number 
     from
         leads l1_0 
     where
         l1_0.id=?
-2026-09-25T18:17:20.212+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.669+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         l1_0.id,
         l1_0.advance_paid_enabled,
@@ -1838,21 +3095,23 @@ Unconditional classes:
         l1_0.mobile_number,
         l1_0.next_follow_up_date,
         l1_0.notes,
+        l1_0.payment_revision,
         l1_0.preferred_location,
         l1_0.property_type,
+        l1_0.total_asset_value,
         l1_0.whatsapp_number 
     from
         leads l1_0 
     where
         l1_0.id=? for update
-2026-09-25T18:17:20.230+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.671+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         (count(c1_0.id)>0) 
     from
         customers c1_0 
     where
         c1_0.lead_id=?
-2026-09-25T18:17:20.230+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.671+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     update
         leads 
     set
@@ -1870,17 +3129,19 @@ Unconditional classes:
         mobile_number=?,
         next_follow_up_date=?,
         notes=?,
+        payment_revision=?,
         preferred_location=?,
         property_type=?,
+        total_asset_value=?,
         whatsapp_number=? 
     where
         id=?
-2026-09-25T18:17:20.230+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.690+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         count(*) 
     from
         customers c1_0
-2026-09-25T18:17:20.252+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.693+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         l1_0.id,
         l1_0.advance_paid_enabled,
@@ -1897,20 +3158,70 @@ Unconditional classes:
         l1_0.mobile_number,
         l1_0.next_follow_up_date,
         l1_0.notes,
+        l1_0.payment_revision,
         l1_0.preferred_location,
         l1_0.property_type,
+        l1_0.total_asset_value,
         l1_0.whatsapp_number 
     from
         leads l1_0 
     where
         l1_0.id=? for update
-2026-09-25T18:17:20.254+05:30 DEBUG 5332 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+2026-09-29T12:40:02.699+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
     select
         (count(c1_0.id)>0) 
     from
         customers c1_0 
     where
         c1_0.lead_id=?
+2026-09-29T12:40:02.708+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        l1_0.id,
+        l1_0.advance_paid_enabled,
+        l1_0.assigned_agent,
+        l1_0.category,
+        l1_0.created_date,
+        l1_0.customer_name,
+        l1_0.email,
+        l1_0.interested_property,
+        l1_0.lead_source,
+        l1_0.lead_status,
+        l1_0.maximum_budget,
+        l1_0.minimum_budget,
+        l1_0.mobile_number,
+        l1_0.next_follow_up_date,
+        l1_0.notes,
+        l1_0.payment_revision,
+        l1_0.preferred_location,
+        l1_0.property_type,
+        l1_0.total_asset_value,
+        l1_0.whatsapp_number 
+    from
+        leads l1_0 
+    where
+        l1_0.id=? for update
+2026-09-29T12:40:02.711+05:30 DEBUG 29160 --- [real-estate-crm] [           main] org.hibernate.SQL                        : 
+    select
+        p1_0.id,
+        p1_0.amount,
+        p1_0.booking,
+        p1_0.customer,
+        p1_0.due_date,
+        p1_0.lead_id,
+        p1_0.notes,
+        p1_0.paid_date,
+        p1_0.payment_mode,
+        p1_0.payment_type,
+        p1_0.property,
+        p1_0.receipt_number,
+        p1_0.status,
+        p1_0.transaction_number 
+    from
+        payments p1_0 
+    where
+        p1_0.lead_id=? 
+    order by
+        p1_0.id
 ]]></system-out>
   </testcase>
 </testsuite>

@@ -14,10 +14,12 @@ public class LeadService {
     private final LeadRepository leads;
     private final CustomerRepository customers;
     private final com.realestate.repository.PaymentRepository payments;
-    public LeadService(LeadRepository leads, CustomerRepository customers, com.realestate.repository.PaymentRepository payments) {
+    private final LeadPaymentService paymentService;
+    public LeadService(LeadRepository leads, CustomerRepository customers, com.realestate.repository.PaymentRepository payments, LeadPaymentService paymentService) {
         this.leads = leads;
         this.customers = customers;
         this.payments = payments;
+        this.paymentService = paymentService;
     }
 
     @Transactional
@@ -43,7 +45,10 @@ public class LeadService {
             throw new IllegalArgumentException("Confirm conversion to a customer before saving Advance Paid.");
         }
         Lead saved = leads.saveAndFlush(input);
-        if (shouldConvert) customers.save(new Customer(saved));
+        if (shouldConvert) {
+            paymentService.recordConversionAdvance(saved, input.getAdvanceAmount());
+            customers.save(new Customer(saved));
+        }
         return saved;
     }
 

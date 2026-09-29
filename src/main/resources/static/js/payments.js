@@ -1,6 +1,7 @@
 window.LeadPayments = (() => {
   const byId = (id) => document.getElementById(id);
   const editor = byId('payment-editor');
+  const section = byId('customer-payment-details');
   const asset = byId('payment-asset');
   const advance = byId('payment-advance');
   const rows = byId('payment-installments');
@@ -8,6 +9,10 @@ window.LeadPayments = (() => {
   const currency = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' });
   let leadId = null, saved = null, dirty = false, generation = 0, pending = null;
   const format = (paise) => currency.format(paise / 100);
+  function todayDate() {
+    const today = new Date();
+    return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  }
 
   function money(value, label) {
     if (!/^\d+(\.\d{1,2})?$/.test(value)) throw new Error(`${label}: enter a non-negative amount with up to two decimals.`);
@@ -18,33 +23,36 @@ window.LeadPayments = (() => {
   }
   const decimal = (paise) => (paise / 100).toFixed(2);
 
-  function read() {
-    const totalAsset = money(asset.value.trim(), 'Total Asset Value');
-    if (totalAsset <= 0) throw new Error('Enter the asset value before recording payments.');
+  function read(requireAsset = true) {
+    const totalAsset = !requireAsset && !asset.value.trim() ? null : money(asset.value.trim(), 'Total Asset Value');
+    if (totalAsset !== null && totalAsset <= 0) throw new Error('Enter the asset value before recording payments.');
     const advanceAmount = money(advance.value.trim(), 'Advance Amount');
-    if (advanceAmount > totalAsset) throw new Error('Advance Amount cannot exceed Total Asset Value.');
+    if (totalAsset !== null && advanceAmount > totalAsset) throw new Error('Advance Amount cannot exceed Total Asset Value.');
     let installmentsTotal = 0;
     const installments = Array.from(rows.children).map((row, index) => {
       const amount = money(row.querySelector('[data-amount]').value.trim(), `Installment ${index + 1}`);
       if (amount <= 0) throw new Error(`Installment ${index + 1} must be greater than zero.`);
       installmentsTotal += amount;
-      if (advanceAmount + installmentsTotal > totalAsset) throw new Error('This payment exceeds the remaining balance. Reduce the amount before saving.');
-      return { amount: decimal(amount), paymentDate: row.querySelector('[data-date]').value, notes: row.querySelector('[data-notes]').value };
+      if (totalAsset !== null && advanceAmount + installmentsTotal > totalAsset) throw new Error('This payment exceeds the remaining balance. Reduce the amount before saving.');
+      const dateInput = row.querySelector('[data-date]');
+      dateInput.max = todayDate();
+      if (dateInput.value > dateInput.max) throw new Error(`Installment ${index + 1}: payment date cannot be in the future.`);
+      return { amount: decimal(amount), paymentDate: dateInput.value, notes: row.querySelector('[data-notes]').value };
     });
     return { totalAsset, advanceAmount, installmentsTotal, total: advanceAmount + installmentsTotal,
-      remaining: totalAsset - advanceAmount - installmentsTotal, installments };
+      remaining: totalAsset === null ? null : totalAsset - advanceAmount - installmentsTotal, installments };
   }
 
   function recalculate() {
     try {
-      const state = read();
+      const state = read(false);
       byId('payment-installments-total').textContent = format(state.installmentsTotal);
       byId('payment-total').textContent = format(state.total);
-      byId('payment-remaining').textContent = format(state.remaining);
-      byId('payment-status').textContent = state.remaining === 0 ? 'Fully Paid' : 'Balance Due';
-      byId('payment-add').disabled = state.remaining === 0 || rows.children.length >= 500;
-      byId('payment-save').disabled = false;
-      message.textContent = '';
+      byId('payment-remaining').textContent = state.remaining === null ? '—' : format(state.remaining);
+      byId('payment-status').textContent = state.remaining === null ? 'Asset value required' : state.remaining === 0 ? 'Fully Paid' : 'Balance Due';
+      byId('payment-add').disabled = state.remaining === null || state.remaining === 0 || rows.children.length >= 500;
+      byId('payment-save').disabled = state.remaining === null;
+      message.textContent = state.remaining === null ? 'Your advance is saved. Enter Total Asset Value to calculate the remaining balance and add installments.' : '';
       return state;
     } catch (error) {
       byId('payment-status').textContent = 'Check payment amounts';
@@ -61,8 +69,10 @@ window.LeadPayments = (() => {
     row.className = 'payment-installment';
     row.innerHTML = '<strong class="installment-number"></strong><label>Amount (₹)<input type="text" inputmode="decimal" data-amount autocomplete="off"></label><label>Payment date<input type="date" data-date></label><label>Notes / reference<input type="text" maxlength="1000" data-notes></label><button type="button" class="danger-button">Delete</button>';
     row.querySelector('[data-amount]').value = item.amount ?? '';
-    const today = new Date();
-    row.querySelector('[data-date]').value = item.paymentDate || `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    const dateInput = row.querySelector('[data-date]');
+    dateInput.max = todayDate();
+    dateInput.value = item.paymentDate || dateInput.max;
+    dateInput.addEventListener('focus', () => { dateInput.max = todayDate(); });
     row.querySelector('[data-notes]').value = item.notes || '';
     row.querySelector('button').addEventListener('click', () => {
       row.remove(); renumber(); dirty = true; recalculate();
@@ -86,6 +96,7 @@ window.LeadPayments = (() => {
   }
 
   async function open(id) {
+    section.hidden = !id;
     const requestGeneration = ++generation;
     leadId = id; saved = null; dirty = false;
     editor.disabled = true;
@@ -120,6 +131,8 @@ window.LeadPayments = (() => {
         });
         const result = await response.json().catch(() => null);
         if (!response.ok) throw new Error(result?.message || 'Payments could not be saved. Please try again.');
+        AppNotice.success('Payment details saved successfully.');
+        document.dispatchEvent(new Event('payments-updated'));
         if (requestGeneration === generation) {
           saved = result; populate(result); message.textContent = 'Payment details saved.';
         }
@@ -143,7 +156,12 @@ window.LeadPayments = (() => {
   });
   return {
     open, isDirty: () => dirty,
-    close: () => { generation++; leadId = null; dirty = false; },
+    close: () => {
+      generation++; leadId = null; saved = null; dirty = false;
+      section.hidden = true; editor.disabled = true;
+      asset.value = ''; advance.value = '0'; rows.replaceChildren();
+      message.textContent = '';
+    },
     saveIfDirty: async () => { if (pending) await pending; if (dirty) await save(); }
   };
 })();

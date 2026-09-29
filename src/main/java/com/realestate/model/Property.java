@@ -32,6 +32,7 @@ public class Property {
 
     public Property() {}
     public Long getId() { return id; }
+    public void setId(Long value) { id = value; }
     public String getPropertyId() { return propertyId; }
     public void setPropertyId(String value) { propertyId = value; }
     public String getPropertyName() { return propertyName; }

@@ -1,0 +1,4 @@
+/target/
+/backups/
+/data/*.db
+*.log

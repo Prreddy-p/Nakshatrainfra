@@ -18,6 +18,11 @@ public class Lead {
     private BigDecimal minimumBudget;
     private BigDecimal maximumBudget;
     private Boolean advancePaidEnabled = false;
+    // Input for the initial conversion; the actual amount is stored as a Payment.
+    @Transient
+    private BigDecimal advanceAmount;
+    public BigDecimal getAdvanceAmount() { return advanceAmount; }
+    public void setAdvanceAmount(BigDecimal value) { advanceAmount = value; }
     @Column(precision = 15, scale = 2)
     private BigDecimal totalAssetValue;
     private Long paymentRevision = 0L;

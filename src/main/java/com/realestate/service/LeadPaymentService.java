@@ -45,6 +45,7 @@ public class LeadPaymentService {
             if (item == null) throw new IllegalArgumentException("Invalid installment");
             total = total.add(money(item.amount(), "Installment amount", true));
             if (item.paymentDate() == null) throw new IllegalArgumentException("Each installment requires a payment date.");
+            if (item.paymentDate().isAfter(LocalDate.now())) throw new IllegalArgumentException("Payment date cannot be in the future.");
             if (item.notes() != null && item.notes().length() > 1000) throw new IllegalArgumentException("Notes must be at most 1000 characters.");
         }
         if (total.compareTo(asset) > 0) throw new IllegalArgumentException("Advance and installments cannot exceed Total Asset Value.");
@@ -55,6 +56,25 @@ public class LeadPaymentService {
         lead.setPaymentRevision(lead.getPaymentRevision() + 1);
         leads.saveAndFlush(lead);
         return details(lead);
+    }
+
+    // Called inside LeadService's transaction: conversion and payment commit together.
+    @Transactional(propagation = org.springframework.transaction.annotation.Propagation.MANDATORY)
+    public void recordConversionAdvance(Lead lead, BigDecimal amount) {
+        BigDecimal advance = money(amount, "Advance Amount", true);
+        Details existing = details(lead);
+        if (existing.advanceAmount().signum() > 0) {
+            if (existing.advanceAmount().compareTo(advance) != 0) {
+                throw new IllegalArgumentException("An advance is already recorded. Enter the existing advance amount to convert this lead.");
+            }
+            return;
+        }
+        if (lead.getTotalAssetValue() != null && existing.totalPaid().add(advance).compareTo(lead.getTotalAssetValue()) > 0) {
+            throw new IllegalArgumentException("Advance and installments cannot exceed Total Asset Value.");
+        }
+        add(lead, "Advance", advance, LocalDate.now(), "Advance recorded during customer conversion");
+        lead.setPaymentRevision(lead.getPaymentRevision() + 1);
+        leads.saveAndFlush(lead);
     }
 
     private void add(Lead lead, String type, BigDecimal amount, LocalDate date, String notes) {

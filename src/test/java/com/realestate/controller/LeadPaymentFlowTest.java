@@ -71,4 +71,19 @@ class LeadPaymentFlowTest {
             .andExpect(jsonPath("revision").value(1));
         mvc.perform(delete("/api/leads/" + id)).andExpect(status().isConflict());
     }
+
+    @Test void acceptsPastAndTodayButRejectsFutureDatesWithoutChangingPayments() throws Exception {
+        String today = java.time.LocalDate.now().toString();
+        String yesterday = java.time.LocalDate.now().minusDays(1).toString();
+        String tomorrow = java.time.LocalDate.now().plusDays(1).toString();
+        save("1000", "0", List.of(Map.of("amount", "100", "paymentDate", yesterday),
+                Map.of("amount", "200", "paymentDate", today)), 0)
+                .andExpect(status().isOk()).andExpect(jsonPath("totalPaid").value(300));
+        save("1000", "0", List.of(Map.of("amount", "500", "paymentDate", tomorrow)), 1)
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("message").value("Payment date cannot be in the future."));
+        mvc.perform(get("/api/leads/" + id + "/payments"))
+                .andExpect(jsonPath("totalPaid").value(300))
+                .andExpect(jsonPath("revision").value(1));
+    }
 }

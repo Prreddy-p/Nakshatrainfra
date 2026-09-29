@@ -37,11 +37,16 @@ class LeadConversionTest {
     @Test void confirmedConversionPersistsAndDoesNotDuplicate() throws Exception {
         Lead lead = newLead();
         lead.setAdvancePaidEnabled(true);
+        lead.setAdvanceAmount(new java.math.BigDecimal("25000.50"));
         mvc.perform(put("/api/leads/" + lead.getId() + "?conversionConfirmed=true")
                 .contentType("application/json").content(json.writeValueAsString(lead)))
                 .andExpect(status().isOk()).andExpect(jsonPath("advancePaidEnabled").value(true));
         long count = customers.count();
         assertTrue(customers.existsByLeadId(lead.getId()));
+        mvc.perform(get("/api/leads/" + lead.getId() + "/payments"))
+                .andExpect(jsonPath("advanceAmount").value(25000.50))
+                .andExpect(jsonPath("totalPaid").value(25000.50))
+                .andExpect(jsonPath("revision").value(1));
         mvc.perform(get("/api/leads/" + lead.getId())).andExpect(jsonPath("advancePaidEnabled").value(true));
         mvc.perform(get("/api/customers")).andExpect(status().isOk())
                 .andExpect(jsonPath("$[?(@.leadId == " + lead.getId() + ")].name").value("Conversion test"));
@@ -57,6 +62,9 @@ class LeadConversionTest {
                 .contentType("application/json").content(json.writeValueAsString(lead))).andExpect(status().isOk());
         assertEquals(count, customers.count());
         mvc.perform(delete("/api/leads/" + lead.getId())).andExpect(status().isConflict());
+        mvc.perform(get("/api/leads/" + lead.getId() + "/payments"))
+                .andExpect(jsonPath("advanceAmount").value(25000.50))
+                .andExpect(jsonPath("revision").value(1));
     }
 
     @Test void missingConfirmationDoesNotSaveOrConvert() throws Exception {
@@ -72,9 +80,43 @@ class LeadConversionTest {
         Lead lead = new Lead();
         lead.setCustomerName("New customer");
         lead.setAdvancePaidEnabled(true);
+        lead.setAdvanceAmount(new java.math.BigDecimal("1000"));
         String body = mvc.perform(post("/api/leads?conversionConfirmed=true").contentType("application/json")
                 .content(json.writeValueAsString(lead))).andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
         assertTrue(customers.existsByLeadId(json.readTree(body).get("id").asLong()));
+    }
+
+    @Test void invalidAdvanceRollsBackLeadChangesAndConversion() throws Exception {
+        Lead lead = newLead();
+        for (String amount : new String[]{"null", "0", "-1", "0.001", "10000000000000"}) {
+            mvc.perform(put("/api/leads/" + lead.getId() + "?conversionConfirmed=true")
+                    .contentType("application/json")
+                    .content("{\"customerName\":\"Should not be saved\",\"advancePaidEnabled\":true,\"advanceAmount\":" + amount + "}"))
+                    .andExpect(status().isBadRequest());
+            assertFalse(customers.existsByLeadId(lead.getId()));
+            assertEquals("Conversion test", leads.findById(lead.getId()).orElseThrow().getCustomerName());
+            mvc.perform(get("/api/leads/" + lead.getId() + "/payments"))
+                    .andExpect(jsonPath("advanceAmount").value(0));
+        }
+    }
+
+    @Test void conversionRespectsExistingAssetValueAndPreservesInstallments() throws Exception {
+        Lead lead = newLead();
+        mvc.perform(put("/api/leads/" + lead.getId() + "/payments").contentType("application/json")
+                .content("{\"totalAssetValue\":1000,\"advanceAmount\":0,\"installments\":[{\"amount\":200,\"paymentDate\":\"2026-09-29\"}],\"revision\":0}"))
+                .andExpect(status().isOk());
+        lead.setAdvancePaidEnabled(true);
+        lead.setAdvanceAmount(new java.math.BigDecimal("801"));
+        mvc.perform(put("/api/leads/" + lead.getId() + "?conversionConfirmed=true")
+                .contentType("application/json").content(json.writeValueAsString(lead))).andExpect(status().isBadRequest());
+        assertFalse(customers.existsByLeadId(lead.getId()));
+        lead.setAdvanceAmount(new java.math.BigDecimal("300"));
+        mvc.perform(put("/api/leads/" + lead.getId() + "?conversionConfirmed=true")
+                .contentType("application/json").content(json.writeValueAsString(lead))).andExpect(status().isOk());
+        mvc.perform(get("/api/leads/" + lead.getId() + "/payments"))
+                .andExpect(jsonPath("advanceAmount").value(300))
+                .andExpect(jsonPath("totalInstallments").value(200))
+                .andExpect(jsonPath("remainingAmount").value(500));
     }
 }

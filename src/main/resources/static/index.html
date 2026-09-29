@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/estate-theme.css">
 </head>
 <body>
   <section class="login-screen" id="login-screen">
@@ -70,17 +71,17 @@
         <a class="nav-item" href="#customers"><span class="nav-icon">◎</span>Customers</a>
         <a class="nav-item" href="#follow-ups"><span class="nav-icon">↗</span>Follow-ups</a>
         <a class="nav-item" href="#site-visits"><span class="nav-icon">⌖</span>Site visits</a>
-        <span class="nav-label second-label">Sales &amp; finance</span>
-        <a class="nav-item" href="#bookings"><span class="nav-icon">▣</span>Bookings</a>
-        <a class="nav-item" href="#payments"><span class="nav-icon">₹</span>Payments</a>
-        <a class="nav-item" href="#commissions"><span class="nav-icon">%</span>Commissions</a>
-        <a class="nav-item" href="#expenses"><span class="nav-icon">−</span>Expenses</a>
-        <span class="nav-label second-label">Partners &amp; admin</span>
-        <a class="nav-item" href="#brokers"><span class="nav-icon">◇</span>Brokers &amp; agents</a>
-        <a class="nav-item" href="#users"><span class="nav-icon">◉</span>User management</a>
-        <a class="nav-item" href="#contacts"><span class="nav-icon">◎</span>Contacts</a>
-        <a class="nav-item" href="#reports"><span class="nav-icon">▥</span>Reports</a>
-        <a class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a>
+        <span data-manager-nav class="nav-label second-label">Sales &amp; finance</span>
+        <a data-manager-nav class="nav-item" href="#bookings"><span class="nav-icon">▣</span>Bookings</a>
+        <a data-manager-nav class="nav-item" href="#payments"><span class="nav-icon">₹</span>Payments</a>
+        <a data-manager-nav class="nav-item" href="#commissions"><span class="nav-icon">%</span>Commissions</a>
+        <a data-manager-nav class="nav-item" href="#expenses"><span class="nav-icon">−</span>Expenses</a>
+        <span data-manager-nav class="nav-label second-label">Partners &amp; admin</span>
+        <a data-manager-nav class="nav-item" href="#brokers"><span class="nav-icon">◇</span>Brokers &amp; agents</a>
+        <a data-manager-nav class="nav-item" href="#users"><span class="nav-icon">◉</span>User management</a>
+        <a data-manager-nav class="nav-item" href="#contacts"><span class="nav-icon">◎</span>Contacts</a>
+        <a data-manager-nav class="nav-item" href="#reports"><span class="nav-icon">▥</span>Reports</a>
+        <a data-manager-nav class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a>
         <a class="nav-item logout-link" href="#logout"><span class="nav-icon">↪</span>Logout</a>
       </nav>
 
@@ -95,6 +96,7 @@
         <button class="mobile-menu" aria-label="Open menu">☰</button>
         <div class="breadcrumb"><span>Workspace</span><b>/</b><strong>Overview</strong></div>
         <div class="top-actions">
+          <button class="quick-add" type="button"><span>+</span> Add record</button>
           <button class="icon-button" aria-label="Search">⌕</button>
           <button class="icon-button notification" aria-label="Notifications">♢<i></i></button>
           <button class="quick-add top-logout"><span>↪</span> Logout</button>
@@ -109,29 +111,37 @@
           <article class="workspace-tile tile-leads">
             <span class="tile-icon" aria-hidden="true">&#9678;</span>
             <h2>Leads</h2>
+            <div class="customer-tile-total" aria-live="polite"><strong id="lead-tile-count">—</strong><span>Total leads</span></div>
             <p>Track enquiries and follow up on new opportunities.</p>
             <button type="button" class="tile-link" id="dashboard-open-leads">View leads <span aria-hidden="true">&rarr;</span></button>
           </article>
           <article class="workspace-tile tile-customers">
             <span class="tile-icon" aria-hidden="true">&#9825;</span>
             <h2>Customers</h2>
+            <div class="customer-tile-total" aria-live="polite"><strong id="customer-tile-count">—</strong><span>Total customers</span></div>
             <p>Keep customer details and relationships in one place.</p>
             <button type="button" class="tile-link" id="dashboard-open-customers">View customers <span aria-hidden="true">&rarr;</span></button>
           </article>
-          <article class="workspace-tile tile-visits">
+          <article class="workspace-tile tile-visits" id="dashboard-open-visits" role="button" tabindex="0" aria-label="View all site visit records">
             <span class="tile-icon" aria-hidden="true">&#8962;</span>
             <h2>Site Visits</h2>
+            <div class="customer-tile-total" aria-live="polite"><strong id="visit-tile-count">—</strong><span>Leads at site visit stage</span></div>
             <p>Plan property visits and keep track of appointments.</p>
+            <span class="tile-link">View site visits <span aria-hidden="true">&rarr;</span></span>
           </article>
-          <article class="workspace-tile tile-payments">
+          <article class="workspace-tile tile-payments" id="dashboard-open-payments" role="button" tabindex="0" aria-label="View pending payments">
             <span class="tile-icon" aria-hidden="true">&#8377;</span>
             <h2>Payments</h2>
+            <div class="customer-tile-total" aria-live="polite"><strong id="payment-tile-count">—</strong><span>Customers with balance due</span></div>
             <p>Stay on top of collections and payment records.</p>
+            <span class="tile-link">View pending payments <span aria-hidden="true">&rarr;</span></span>
           </article>
-          <article class="workspace-tile tile-followup">
+          <article class="workspace-tile tile-followup" id="dashboard-open-followups" role="button" tabindex="0" aria-label="View all follow-up records">
             <span class="tile-icon" aria-hidden="true">&#8635;</span>
             <h2>Followup</h2>
+            <div class="customer-tile-total" aria-live="polite"><strong id="followup-tile-count">—</strong><span>Leads in follow-up</span></div>
             <p>Keep track of upcoming calls and customer follow-ups.</p>
+            <span class="tile-link">View follow-ups <span aria-hidden="true">&rarr;</span></span>
           </article>
         </section>
       </div>
@@ -146,6 +156,15 @@
           <div class="customer-table-head"><span>CUSTOMER</span><span>CONTACT</span><span>PROPERTY</span><span>CREATED</span><span>LEAD</span></div>
           <div id="customer-table-body" aria-live="polite"></div>
         </div>
+      </section>
+      <section class="user-page" id="payments-page" aria-labelledby="payments-page-title">
+        <div class="user-page-header"><div><p class="eyebrow">FINANCE / PAYMENTS</p><h1 id="payments-page-title">Pending payments</h1><p class="subhead">Customers with a remaining balance in Payment Details. Fully paid customers are excluded. Set Total Asset Value in customer payment details to calculate a balance.</p></div><button type="button" class="secondary-button" id="refresh-pending-payments">Refresh</button></div>
+        <div class="user-table-panel pending-payment-panel"><table class="pending-payment-table"><thead><tr><th scope="col">Customer</th><th scope="col">Property</th><th scope="col">Total asset value</th><th scope="col">Total paid</th><th scope="col">Remaining balance</th><th scope="col">Action</th></tr></thead><tbody id="pending-payment-body" aria-live="polite"></tbody></table></div>
+      </section>
+      <section class="user-page" id="properties-page" aria-labelledby="properties-page-title">
+        <div class="user-page-header"><div><p class="eyebrow">WORKSPACE / PROPERTIES</p><h1 id="properties-page-title">Properties</h1><p class="subhead">Browse and manage your property listings.</p></div><button type="button" class="quick-add" id="add-property">+ Add new property</button></div>
+        <div class="lead-toolbar"><label class="lead-search"><input id="property-search" type="search" placeholder="Search name, city or property ID" aria-label="Search properties"></label><select id="property-status-filter" aria-label="Filter property status"><option value="">All statuses</option><option>Available</option><option>Pending</option><option>Sold</option></select><button type="button" class="secondary-button" id="refresh-properties">Refresh</button><span id="property-list-count" aria-live="polite"></span></div>
+        <div class="user-table-panel pending-payment-panel"><table class="pending-payment-table"><thead><tr><th scope="col">Property</th><th scope="col">Type</th><th scope="col">Location</th><th scope="col">Price</th><th scope="col">Status</th><th scope="col">Actions</th></tr></thead><tbody id="property-list-body"></tbody></table></div>
       </section>
       <section class="user-page" id="users-page" aria-labelledby="users-page-title">
         <div class="user-page-header"><div><p class="eyebrow">ADMINISTRATION / USERS</p><h1 id="users-page-title">User management</h1><p class="subhead">Manage the people who work in your Nakshatra Infra workspace.</p></div><button class="quick-add add-new-user"><span>+</span> Add new user</button></div>
@@ -187,7 +206,7 @@
           <label>Mobile number<input name="mobileNumber" type="tel" placeholder="+91 98765 43210"></label>
           <label>WhatsApp number<input name="whatsappNumber" type="tel" placeholder="Same as mobile if applicable"></label>
           <label>Email<input name="email" type="email" placeholder="customer@email.com"></label>
-          <label>Interested property<input name="interestedProperty" placeholder="Property or project name"></label>
+          <label>Interested property<select name="interestedProperty" id="lead-interested-property" aria-describedby="lead-property-help"><option value="">Select a property</option></select><small id="lead-property-help" aria-live="polite"></small><button type="button" class="secondary-button" id="retry-lead-properties" hidden>Retry loading properties</button></label>
           <label>Preferred location<input name="preferredLocation" placeholder="City or locality"></label>
           <label>Property type<select name="propertyType"><option value="">Select type</option><option>Plot</option><option>Land</option><option>Apartment</option><option>Villa</option><option>Independent House</option><option>Commercial</option><option>Office</option><option>Shop</option></select></label>
           <label>Lead source<select name="leadSource"><option>Website</option><option>WhatsApp</option><option>Facebook</option><option>Instagram</option><option>Google</option><option>Referral</option><option>Broker</option><option>Walk-in</option><option>Other</option></select></label>
@@ -198,10 +217,11 @@
         </div>
         <div class="advance-paid-control">
           <label><input type="checkbox" name="advancePaidEnabled" id="lead-advance-paid"> Advance Paid</label>
-          <p>Save with Advance Paid checked to confirm conversion to a customer. An existing customer will not be duplicated or removed if you later uncheck this box.</p>
+          <p>Check Advance Paid to enter the amount, then confirm saving and converting this lead to a customer.</p>
+          <p id="lead-advance-summary" aria-live="polite"></p>
         </div>
         <label>Notes<textarea name="notes" rows="3" placeholder="What does this customer need? Add context for the assigned agent."></textarea></label>
-        <section class="lead-payments" aria-labelledby="payment-section-title">
+        <section class="lead-payments" id="customer-payment-details" aria-labelledby="payment-section-title" hidden>
           <div class="panel-heading"><div><h2 id="payment-section-title">Payment Details</h2><p>Advance and installments for this asset.</p></div><strong id="payment-status" aria-live="polite"></strong></div>
           <p id="payment-message" aria-live="polite"></p>
           <fieldset id="payment-editor" disabled>
@@ -235,7 +255,10 @@
       </form>
     </section>
   </div>
+  <script src="js/notifications.js"></script>
   <script src="js/payments.js"></script>
+  <script src="js/properties.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/records.js"></script>
 </body>
 </html>
