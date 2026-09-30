@@ -1,5 +1,7 @@
 package com.realestate.controller;
 
+import static com.realestate.security.RecordAccess.*;
+
 import com.realestate.repository.*;
 import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
@@ -17,14 +19,14 @@ public class DashboardController {
     public DashboardController(PropertyRepository properties, LeadRepository leads, BookingRepository bookings, PaymentRepository payments, TaskRepository tasks) { this.properties = properties; this.leads = leads; this.bookings = bookings; this.payments = payments; this.tasks = tasks; }
     @GetMapping public Map<String, Object> summary() {
         Map<String, Object> result = new LinkedHashMap<>();
-        result.put("totalProperties", properties.count());
-        result.put("availableProperties", properties.findByStatusIgnoreCase("Available").size());
-        result.put("soldProperties", properties.findByStatusIgnoreCase("Sold").size());
-        result.put("totalLeads", leads.count());
-        result.put("hotLeads", leads.findByCategoryIgnoreCase("Hot").size());
-        result.put("bookings", bookings.count());
-        result.put("tasksPending", tasks.findByStatusIgnoreCase("Pending").size());
-        result.put("paymentsRecorded", payments.count());
+        result.put("totalProperties", visible(properties.findAll()).size());
+        result.put("availableProperties", visible(properties.findByStatusIgnoreCase("Available")).size());
+        result.put("soldProperties", visible(properties.findByStatusIgnoreCase("Sold")).size());
+        result.put("totalLeads", visible(leads.findAll()).size());
+        result.put("hotLeads", visible(leads.findByCategoryIgnoreCase("Hot")).size());
+        result.put("bookings", visible(bookings.findAll()).size());
+        result.put("tasksPending", visible(tasks.findByStatusIgnoreCase("Pending")).size());
+        result.put("paymentsRecorded", visible(payments.findAll()).size());
         result.put("currency", "INR");
         result.put("totalSales", BigDecimal.ZERO);
         result.put("amountReceived", BigDecimal.ZERO);

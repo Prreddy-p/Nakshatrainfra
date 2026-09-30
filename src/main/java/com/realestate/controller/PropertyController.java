@@ -1,5 +1,7 @@
 package com.realestate.controller;
 
+import static com.realestate.security.RecordAccess.*;
+
 import com.realestate.model.Property;
 import com.realestate.repository.PropertyRepository;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +15,11 @@ public class PropertyController {
     public PropertyController(PropertyRepository repository) { this.repository = repository; }
 
     @GetMapping public List<Property> list(@RequestParam(required = false) String status, @RequestParam(required = false) String search) {
-        if (status != null && !status.isBlank()) return repository.findByStatusIgnoreCase(status);
-        if (search != null && !search.isBlank()) return repository.findByPropertyNameContainingIgnoreCaseOrCityContainingIgnoreCase(search, search);
-        return repository.findAll();
+        if (status != null && !status.isBlank()) return visible(repository.findByStatusIgnoreCase(status));
+        if (search != null && !search.isBlank()) return visible(repository.findByPropertyNameContainingIgnoreCaseOrCityContainingIgnoreCase(search, search));
+        return visible(repository.findAll());
     }
-    @GetMapping("/{id}") public ResponseEntity<Property> get(@PathVariable Long id) { return repository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build()); }
+    @GetMapping("/{id}") public ResponseEntity<Property> get(@PathVariable Long id) { return repository.findById(id).map(record -> ResponseEntity.ok(require(record))).orElse(ResponseEntity.notFound().build()); }
     @PostMapping public Property create(@RequestBody Property property) {
         validate(property);
         property.setId(null);
@@ -29,6 +31,8 @@ public class PropertyController {
     @PutMapping("/{id}") public ResponseEntity<Property> update(@PathVariable Long id, @RequestBody Property input) {
         validate(input);
         return repository.findById(id).map(existing -> {
+            require(existing);
+            input.preserveOwner(existing);
             input.setId(existing.getId());
             input.setPropertyId(existing.getPropertyId());
             return ResponseEntity.ok(repository.save(input));
@@ -45,5 +49,5 @@ public class PropertyController {
             throw new IllegalArgumentException("Property status is required");
         }
     }
-    @DeleteMapping("/{id}") public ResponseEntity<Void> delete(@PathVariable Long id) { if (!repository.existsById(id)) return ResponseEntity.notFound().build(); repository.deleteById(id); return ResponseEntity.noContent().build(); }
+    @DeleteMapping("/{id}") public ResponseEntity<Void> delete(@PathVariable Long id) { if (!repository.existsById(id)) return ResponseEntity.notFound().build(); require(repository.findById(id).orElseThrow()); repository.deleteById(id); return ResponseEntity.noContent().build(); }
 }

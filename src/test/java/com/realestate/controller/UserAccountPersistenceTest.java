@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static com.realestate.controller.AuthenticatedRequests.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest(properties = {
@@ -23,6 +23,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 })
 @AutoConfigureMockMvc
 class UserAccountPersistenceTest {
+    @Autowired com.realestate.repository.UserAccountRepository authUsers;
+    @org.junit.jupiter.api.BeforeEach void authenticateRequests() { AuthenticatedRequests.manager(authUsers); }
     @Autowired MockMvc mvc;
     @Autowired ObjectMapper json;
     @Autowired UserAccountRepository users;

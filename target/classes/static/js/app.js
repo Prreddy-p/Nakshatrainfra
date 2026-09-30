@@ -233,20 +233,28 @@ document.querySelectorAll('.nav-item').forEach((item) => {
 async function loadLeads() {
   if (!leadTableBody) return;
   leadTableBody.innerHTML = '<div class="lead-empty">Loading your leads...</div>';
+  ['followup-nav-count', 'visit-nav-count'].forEach(id => {
+    const badge = document.getElementById(id);
+    badge.textContent = '—';
+    badge.title = 'Loading count...';
+  });
   try {
     const response = await fetch('/api/leads');
     if (!response.ok) throw new Error('Leads could not be loaded');
     leads = await response.json();
     const normalizedStatus = lead => String(lead.leadStatus || '').toLowerCase().replace(/[\s-]/g, '');
     updateTileCount('lead-tile-count', leads.length);
-    updateTileCount('visit-tile-count', leads.filter(lead => normalizedStatus(lead) === 'sitevisit').length);
+    const visits = leads.filter(lead => normalizedStatus(lead) === 'sitevisit');
+    updateTileCount('visit-tile-count', visits.length);
+    updateTileCount('visit-nav-count', visits.length);
     const followups = leads.filter(lead => normalizedStatus(lead) === 'followup');
     updateTileCount('followup-tile-count', followups.length);
+    updateTileCount('followup-nav-count', followups.length);
     renderLeads();
   } catch (error) {
     leadTableBody.innerHTML = '<div class="lead-empty">Could not load leads. Check that the server is running.</div>';
     leadResultCount.textContent = 'Unavailable';
-    ['lead-tile-count', 'visit-tile-count', 'followup-tile-count'].forEach(id => updateTileCount(id, null));
+    ['lead-tile-count', 'visit-tile-count', 'followup-tile-count', 'visit-nav-count', 'followup-nav-count'].forEach(id => updateTileCount(id, null));
   }
 }
 
@@ -505,21 +513,26 @@ function openCustomersPage(event) {
 
 async function loadCustomers() {
   const body = document.querySelector('#customer-table-body');
-  const count = document.querySelector('#customer-tile-count');
+  const counts = document.querySelectorAll('#customer-tile-count, #customer-nav-count');
+  counts.forEach(count => { count.textContent = '—'; count.title = 'Loading customer count...'; });
   body.innerHTML = '<div class="lead-empty">Loading customers...</div>';
   try {
     const response = await fetch('/api/customers');
     if (!response.ok) throw new Error('Customers could not be loaded. Please try again.');
     const customers = await response.json();
-    count.textContent = customers.length.toLocaleString();
-    count.removeAttribute('title');
+    counts.forEach(count => {
+      count.textContent = customers.length.toLocaleString();
+      count.removeAttribute('title');
+    });
     body.innerHTML = customers.length ? customers.map((customer) =>
-      `<div class="customer-record"><button type="button" data-customer-lead="${customer.leadId}"><strong>${escapeHtml(customer.name)}</strong></button><div>${escapeHtml(customer.email || 'No email')}<small>${escapeHtml(customer.mobileNumber || 'No phone')}</small></div><span>${escapeHtml(customer.interestedProperty || 'Not specified')}</span><span>${escapeHtml(customer.createdDate)}</span><button type="button" data-customer-lead="${customer.leadId}">Open customer</button></div>`
+      `<div class="customer-record"><button type="button" data-customer-lead="${customer.leadId}"><strong>${escapeHtml(customer.name)}</strong></button><div>${escapeHtml(customer.email || 'No email')}<small>${escapeHtml(customer.mobileNumber || 'No phone')}</small></div><span>${escapeHtml(customer.interestedProperty || 'Not specified')}</span><span>${escapeHtml(customer.createdDate)}<span class="record-audit">${renderRecordAudit(customer)}</span></span><button type="button" data-customer-lead="${customer.leadId}">Open customer</button></div>`
     ).join('') : '<div class="lead-empty">No customers yet. Save a lead with Advance Paid checked to convert it.</div>';
   } catch (error) {
     body.textContent = error.message;
-    count.textContent = '—';
-    count.title = 'Customer count could not be loaded. Reopen Overview to retry.';
+    counts.forEach(count => {
+      count.textContent = '—';
+      count.title = 'Customer count could not be loaded. Reopen Customers to retry.';
+    });
   }
 }
 
@@ -651,7 +664,19 @@ document.getElementById('retry-lead-properties').addEventListener('click', () =>
   loadLeadProperties(document.getElementById('lead-interested-property').value);
 });
 
+function renderRecordAudit(record) {
+  const format = (name, timestamp) => {
+    const date = timestamp ? new Date(timestamp) : null;
+    const localTime = date && !Number.isNaN(date.getTime())
+      ? new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeStyle: 'long' }).format(date) : 'Not recorded';
+    return escapeHtml(name || 'Not recorded') + ' ? ' + escapeHtml(localTime);
+  };
+  return '<div><strong>Created by</strong><br>' + format(record.createdBy, record.createdAt)
+    + '</div><div><strong>Last modified by</strong><br>' + format(record.lastModifiedBy, record.lastModifiedAt) + '</div>';
+}
+
 function openNewLead() {
+  document.querySelector('#lead-audit').textContent = 'Created by and last modified by will be recorded when saved.';
   conversionAdvance = null;
   document.querySelector('#lead-advance-summary').textContent = '';
   LeadPayments.close();
@@ -675,6 +700,7 @@ function openLeadDetails(leadId, { customer = false } = {}) {
   LeadPayments.close();
   if (customer) LeadPayments.open(lead.id);
   editingLeadId = lead.id;
+  document.querySelector('#lead-audit').innerHTML = renderRecordAudit(lead);
   leadForm.reset();
   document.querySelector('#lead-advance-paid').checked = lead.advancePaidEnabled === true;
   renderLeadStatusRibbon(lead.leadStatus || 'New');
@@ -736,21 +762,23 @@ document.querySelector('#lead-search')?.addEventListener('input', renderLeads);
 document.querySelector('#lead-status-filter')?.addEventListener('change', renderLeads);
 document.querySelector('#lead-category-filter')?.addEventListener('change', renderLeads);
 
-document.querySelector('.logout-link')?.addEventListener('click', (event) => {
+document.querySelector('.logout-link')?.addEventListener('click', async (event) => {
   event.preventDefault();
+  await fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
   sessionStorage.removeItem('realEstateUser');
   sessionStorage.removeItem('realEstatePage');
   appShell.style.display = 'none';
   loginScreen.style.display = 'flex';
-  AppNotice.success('Signed out successfully.');
+  window.location.reload();
 });
 
-document.querySelector('.top-logout')?.addEventListener('click', () => {
+document.querySelector('.top-logout')?.addEventListener('click', async () => {
+  await fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
   sessionStorage.removeItem('realEstateUser');
   sessionStorage.removeItem('realEstatePage');
   appShell.style.display = 'none';
   loginScreen.style.display = 'flex';
-  AppNotice.success('Signed out successfully.');
+  window.location.reload();
 });
 
 function updateTaskProgress() {
@@ -892,18 +920,25 @@ document.querySelectorAll('.date-filter, .filter-button').forEach((button) => {
 });
 
 // Restore this tab's workspace after all page handlers have been initialized.
+(async function restoreWorkspace() {
 const savedWorkspaceUser = sessionStorage.getItem('realEstateUser');
 if (savedWorkspaceUser) {
   let savedUser;
   try {
     savedUser = JSON.parse(savedWorkspaceUser);
   } catch {
-    sessionStorage.removeItem('realEstateUser');
+    await fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
+  sessionStorage.removeItem('realEstateUser');
     sessionStorage.removeItem('realEstatePage');
   }
   if (savedUser && savedUser.id && savedUser.emailId) {
+    const session = await fetch('/api/auth/session').then(response => response.ok ? response.json() : null).catch(() => null);
+    if (!session?.active) {
+      document.querySelector('#login-error').textContent = 'Please sign in again to record your name on changes.';
+      return;
+    }
     const savedPage = sessionStorage.getItem('realEstatePage');
-    showWorkspace(savedUser);
+    showWorkspace(session.user);
     if (savedPage === 'leads') openLeadsPage();
     if (savedPage === 'followups') openLeadsPage('followups');
     if (savedPage === 'visits') openLeadsPage('visits');
@@ -913,3 +948,5 @@ if (savedWorkspaceUser) {
     if (savedPage === 'properties') window.PropertiesPage.open();
   }
 }
+
+})();

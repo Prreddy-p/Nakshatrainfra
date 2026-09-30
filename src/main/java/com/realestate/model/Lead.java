@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "leads")
-public class Lead {
+public class Lead extends OwnedRecord {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
     @Column(nullable = false) private String customerName;
     private String mobileNumber;
@@ -39,6 +39,30 @@ public class Lead {
     private LocalDate nextFollowUpDate;
     private LocalDate createdDate = LocalDate.now();
     @Column(length = 2000) private String notes;
+
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private String createdBy;
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private java.time.Instant createdAt;
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private String lastModifiedBy;
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY)
+    private java.time.Instant lastModifiedAt;
+    public String getCreatedBy() { return createdBy; }
+    public java.time.Instant getCreatedAt() { return createdAt; }
+    public String getLastModifiedBy() { return lastModifiedBy; }
+    public java.time.Instant getLastModifiedAt() { return lastModifiedAt; }
+    public void preserveCreationAudit(Lead existing) {
+        createdBy = existing.createdBy;
+        createdAt = existing.createdAt;
+    }
+    public void recordAudit(boolean creation) {
+        String actor = com.realestate.security.AuditActor.name();
+        java.time.Instant now = java.time.Instant.now().truncatedTo(java.time.temporal.ChronoUnit.MICROS);
+        if (creation) { createdBy = actor; createdAt = now; }
+        lastModifiedBy = actor;
+        lastModifiedAt = now;
+    }
 
     public Lead() {}
     public Long getId() { return id; }

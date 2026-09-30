@@ -1,8 +1,12 @@
 C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\AuthControllerTest.java
+C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\AuthenticatedRequests.java
 C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\DatabaseRestartTest.java
 C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\LeadConversionTest.java
 C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\LeadPaymentFlowTest.java
 C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\PasswordResetFlowTest.java
+C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\PropertyAttachmentTest.java
+C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\RecordAccessTest.java
+C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\RecordAuditTest.java
 C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\controller\UserAccountPersistenceTest.java
 C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\service\BookingServiceTest.java
 C:\Users\monik\OneDrive\Desktop\Test\src\test\java\com\realestate\service\PasswordResetMailerTest.java

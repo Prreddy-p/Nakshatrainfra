@@ -19,6 +19,10 @@
 <body>
   <section class="login-screen" id="login-screen">
     <div class="login-brand"><span class="brand-dot"></span><span>Nakshatra Infra</span></div>
+    <section class="login-gallery" id="login-gallery" aria-labelledby="login-gallery-title" hidden>
+      <p class="eyebrow">EXPLORE OUR PROPERTIES</p><h2 id="login-gallery-title">Find your next address.</h2>
+      <div class="login-photo-grid" id="login-photo-grid"></div>
+    </section>
     <div class="login-card">
       <p class="eyebrow">NAKSHATRA INFRA WORKSPACE</p>
       <h1>Welcome back.</h1>
@@ -68,9 +72,9 @@
         <a class="nav-item" href="#calendar"><span class="nav-icon">□</span>Calendar</a>
         <span class="nav-label second-label">Manage</span>
         <a class="nav-item" href="#leads"><span class="nav-icon">◌</span>Leads<span class="nav-count" id="lead-nav-count">0</span></a>
-        <a class="nav-item" href="#customers"><span class="nav-icon">◎</span>Customers</a>
-        <a class="nav-item" href="#follow-ups"><span class="nav-icon">↗</span>Follow-ups</a>
-        <a class="nav-item" href="#site-visits"><span class="nav-icon">⌖</span>Site visits</a>
+        <a class="nav-item" href="#customers"><span class="nav-icon">◎</span>Customers<span class="nav-count" id="customer-nav-count" aria-live="polite">—</span></a>
+        <a class="nav-item" href="#follow-ups"><span class="nav-icon">↗</span>Follow-ups<span class="nav-count" id="followup-nav-count" aria-live="polite">—</span></a>
+        <a class="nav-item" href="#site-visits"><span class="nav-icon">⌖</span>Site visits<span class="nav-count" id="visit-nav-count" aria-live="polite">—</span></a>
         <span data-manager-nav class="nav-label second-label">Sales &amp; finance</span>
         <a data-manager-nav class="nav-item" href="#bookings"><span class="nav-icon">▣</span>Bookings</a>
         <a data-manager-nav class="nav-item" href="#payments"><span class="nav-icon">₹</span>Payments</a>
@@ -96,9 +100,6 @@
         <button class="mobile-menu" aria-label="Open menu">☰</button>
         <div class="breadcrumb"><span>Workspace</span><b>/</b><strong>Overview</strong></div>
         <div class="top-actions">
-          <button class="quick-add" type="button"><span>+</span> Add record</button>
-          <button class="icon-button" aria-label="Search">⌕</button>
-          <button class="icon-button notification" aria-label="Notifications">♢<i></i></button>
           <button class="quick-add top-logout"><span>↪</span> Logout</button>
         </div>
       </header>
@@ -215,6 +216,7 @@
           <label>Category<select name="category"><option>Hot</option><option selected>Warm</option><option>Cold</option></select></label>
           <label>Next follow-up<input name="nextFollowUpDate" type="date"></label>
         </div>
+        <div class="record-audit" id="lead-audit" aria-live="polite"></div>
         <div class="advance-paid-control">
           <label><input type="checkbox" name="advancePaidEnabled" id="lead-advance-paid"> Advance Paid</label>
           <p>Check Advance Paid to enter the amount, then confirm saving and converting this lead to a customer.</p>
@@ -255,6 +257,7 @@
       </form>
     </section>
   </div>
+  <script src="js/login-gallery.js"></script>
   <script src="js/notifications.js"></script>
   <script src="js/payments.js"></script>
   <script src="js/properties.js"></script>

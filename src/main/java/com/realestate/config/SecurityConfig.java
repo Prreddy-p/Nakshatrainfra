@@ -18,12 +18,19 @@ public class SecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http, com.realestate.repository.UserAccountRepository users) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(new com.realestate.security.AccountSessionFilter(users), org.springframework.security.web.authentication.AnonymousAuthenticationFilter.class)
+                .exceptionHandling(errors -> errors
+                    .authenticationEntryPoint((request, response, error) -> response.sendError(401))
+                    .accessDeniedHandler((request, response, error) -> response.sendError(403)))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/api/auth/**", "/api/users/**").permitAll()
+                        .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/api/auth/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/public/property-photos", "/api/public/property-photos/*").permitAll()
+                        .requestMatchers("/api/users/**").hasAnyRole("Admin", "Manager")
+                        .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll())
                 .build();
     }

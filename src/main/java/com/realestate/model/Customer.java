@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
+public class Customer extends OwnedRecord {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(optional = false, fetch = FetchType.LAZY)
@@ -18,9 +18,16 @@ public class Customer {
     private String interestedProperty;
     private LocalDate createdDate = LocalDate.now();
 
+    // Customer details are edited through the linked lead, so share its audit history.
+    public String getCreatedBy() { return lead.getCreatedBy(); }
+    public java.time.Instant getCreatedAt() { return lead.getCreatedAt(); }
+    public String getLastModifiedBy() { return lead.getLastModifiedBy(); }
+    public java.time.Instant getLastModifiedAt() { return lead.getLastModifiedAt(); }
+
     public Customer() {}
     public Customer(Lead lead) {
         this.lead = lead;
+        preserveOwner(lead);
         name = lead.getCustomerName();
         email = lead.getEmail();
         mobileNumber = lead.getMobileNumber();

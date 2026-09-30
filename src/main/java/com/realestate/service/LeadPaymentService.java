@@ -23,7 +23,7 @@ public class LeadPaymentService {
     public LeadPaymentService(LeadRepository leads, PaymentRepository payments) { this.leads = leads; this.payments = payments; }
 
     private Lead lock(Long id) {
-        return leads.lockById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Lead not found"));
+        return com.realestate.security.RecordAccess.require(leads.lockById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Lead not found")));
     }
 
     @Transactional
@@ -54,6 +54,7 @@ public class LeadPaymentService {
         for (Installment item : request.installments()) add(lead, "Installment", item.amount(), item.paymentDate(), item.notes());
         lead.setTotalAssetValue(asset);
         lead.setPaymentRevision(lead.getPaymentRevision() + 1);
+        lead.recordAudit(false);
         leads.saveAndFlush(lead);
         return details(lead);
     }
@@ -74,11 +75,13 @@ public class LeadPaymentService {
         }
         add(lead, "Advance", advance, LocalDate.now(), "Advance recorded during customer conversion");
         lead.setPaymentRevision(lead.getPaymentRevision() + 1);
+        lead.recordAudit(false);
         leads.saveAndFlush(lead);
     }
 
     private void add(Lead lead, String type, BigDecimal amount, LocalDate date, String notes) {
         Payment payment = new Payment();
+        payment.preserveOwner(lead);
         payment.setLead(lead); payment.setCustomer(lead.getCustomerName()); payment.setProperty(lead.getInterestedProperty());
         payment.setPaymentType(type); payment.setAmount(amount); payment.setPaidDate(date); payment.setNotes(notes); payment.setStatus("Paid");
         payments.save(payment);

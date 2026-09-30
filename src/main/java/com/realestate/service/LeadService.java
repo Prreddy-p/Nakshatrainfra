@@ -30,7 +30,10 @@ public class LeadService {
         boolean converted = false;
         if (id != null) {
             Lead existing = leads.lockById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+            com.realestate.security.RecordAccess.require(existing);
+            input.preserveOwner(existing);
             input.setCreatedDate(existing.getCreatedDate());
+            input.preserveCreationAudit(existing);
             input.setTotalAssetValue(existing.getTotalAssetValue());
             input.setPaymentRevision(existing.getPaymentRevision());
             converted = customers.existsByLeadId(id);
@@ -44,6 +47,7 @@ public class LeadService {
         if (shouldConvert && !conversionConfirmed) {
             throw new IllegalArgumentException("Confirm conversion to a customer before saving Advance Paid.");
         }
+        input.recordAudit(id == null);
         Lead saved = leads.saveAndFlush(input);
         if (shouldConvert) {
             paymentService.recordConversionAdvance(saved, input.getAdvanceAmount());
@@ -55,6 +59,7 @@ public class LeadService {
     @Transactional
     public void delete(Long id) {
         Lead lead = leads.lockById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        com.realestate.security.RecordAccess.require(lead);
         if (customers.existsByLeadId(id)) {
             throw new IllegalStateException("This lead is linked to a customer and cannot be deleted.");
         }

@@ -24,6 +24,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        com.realestate.security.AuditActor.signOut();
         if (request.username() == null || request.password() == null || request.role() == null || request.role().isBlank()) {
             return ResponseEntity.badRequest().body(Map.of("message", "Username, password, and role are required"));
         }
@@ -34,9 +35,22 @@ public class AuthController {
             if (token != null) return ResponseEntity.ok(Map.of("passwordChangeRequired", true, "resetToken", token));
         }
         if (user != null && passwordMatchesOrMigrates(user, request.password())) {
+            com.realestate.security.AuditActor.signIn(user);
             return ResponseEntity.ok(user);
         }
         return ResponseEntity.status(401).body(Map.of("message", "Invalid username, password, or role"));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout() {
+        com.realestate.security.AuditActor.signOut();
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/session")
+    public Map<String, Object> session() {
+        var user = com.realestate.security.RecordAccess.user();
+        return user == null ? Map.of("active", false) : Map.of("active", true, "user", user);
     }
 
     private boolean passwordMatchesOrMigrates(UserAccount user, String rawPassword) {

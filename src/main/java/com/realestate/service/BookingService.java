@@ -22,8 +22,10 @@ public class BookingService {
 
     @Transactional
     public Booking create(Booking booking) {
+        if (booking.getId() != null) throw new IllegalArgumentException("New booking must not have an ID");
         Property property = propertyRepository.findById(booking.getProperty().getId())
                 .orElseThrow(() -> new IllegalArgumentException("Property was not found"));
+        com.realestate.security.RecordAccess.require(property);
         if (bookingRepository.existsByPropertyIdAndStatusIn(property.getId(), ACTIVE_STATUSES)) {
             throw new IllegalStateException("This property already has an active booking");
         }
@@ -36,6 +38,8 @@ public class BookingService {
     public Booking updateStatus(Long id, String status) {
         Booking booking = bookingRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Booking was not found"));
+        com.realestate.security.RecordAccess.require(booking);
+        com.realestate.security.RecordAccess.require(booking.getProperty());
         booking.setStatus(status);
         if ("Cancelled".equalsIgnoreCase(status)) {
             booking.getProperty().setStatus("Available");

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "documents")
-public class DocumentRecord {
+public class DocumentRecord extends OwnedRecord {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
     private String documentName;
     private String relatedType;

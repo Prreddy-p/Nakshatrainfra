@@ -23,6 +23,15 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class BookingServiceTest {
+    @org.junit.jupiter.api.BeforeEach void authenticate() {
+        var user = new com.realestate.model.UserAccount(); user.setRole("Manager"); user.setId(1L);
+        org.springframework.security.core.context.SecurityContextHolder.getContext().setAuthentication(
+            new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(user, null, java.util.List.of()));
+    }
+    @org.junit.jupiter.api.AfterEach void clearAuthentication() {
+        org.springframework.security.core.context.SecurityContextHolder.clearContext();
+    }
+
     static {
         System.setProperty("net.bytebuddy.experimental", "true");
     }
