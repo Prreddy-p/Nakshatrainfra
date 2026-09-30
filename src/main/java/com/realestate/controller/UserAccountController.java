@@ -28,8 +28,12 @@ public class UserAccountController {
     @PutMapping("/{id}") public ResponseEntity<UserAccount> update(@PathVariable Long id, @RequestBody UserAccount input) {
         return repository.findById(id).map(existing -> {
             validateRole(input.getRole());
+            repository.findByEmailIdIgnoreCase(input.getEmailId()).ifPresent(other -> {
+                if (!other.getId().equals(id)) throw new IllegalStateException("A user with this email already exists");
+            });
             input.setId(id);
             if (input.getPassword() != null && !input.getPassword().isBlank()) {
+                if (input.getPassword().length() < 6) throw new IllegalArgumentException("Password must be at least 6 characters");
                 input.setPassword(passwordEncoder.encode(input.getPassword()));
             } else {
                 input.setPassword(existing.getPassword());
@@ -43,6 +47,6 @@ public class UserAccountController {
         return ResponseEntity.noContent().build();
     }
     private void validateRole(String role) {
-        if (!"Manager".equals(role) && !"Associate".equals(role)) throw new IllegalArgumentException("Role must be Manager or Associate");
+        if (!"Admin".equals(role) && !"Manager".equals(role) && !"Associate".equals(role)) throw new IllegalArgumentException("Role must be Admin, Manager, or Associate");
     }
 }

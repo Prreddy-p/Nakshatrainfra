@@ -19,6 +19,7 @@ const userTableBody = document.querySelector('#user-table-body');
 const userModal = document.querySelector('.user-modal-backdrop');
 const userForm = document.querySelector('#user-form');
 let users = [];
+let editingUserId = null;
 let leads = [];
 let editingLeadId = null;
 let conversionAdvance = null;
@@ -108,8 +109,20 @@ document.querySelector('#login-form')?.addEventListener('submit', async (event) 
       body: JSON.stringify({ username, password, role })
     });
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error('Invalid email, password, or role. Use an account registered in this hosted application.');
+      }
+      if (response.status === 404 || response.status === 405) {
+        throw new Error('The login API is unavailable. Deploy the Spring Boot application and route /api requests to it.');
+      }
+      if (response.status >= 500) {
+        throw new Error('The application server could not complete login. Check the hosted server logs and database connection.');
+      }
       const details = await response.json().catch(() => null);
-      throw new Error(details?.message || 'Invalid username, password, or role.');
+      throw new Error(details?.message || `Sign-in request failed (HTTP ${response.status}).`);
+    }
+    if (!response.headers.get('content-type')?.includes('application/json')) {
+      throw new Error('The login API returned a web page instead of JSON. Check that /api requests reach the Spring Boot application.');
     }
     const result = await response.json();
     if (result.passwordChangeRequired) {
@@ -123,7 +136,7 @@ document.querySelector('#login-form')?.addEventListener('submit', async (event) 
     }
   } catch (loginError) {
     error.textContent = loginError instanceof TypeError
-      ? 'Cannot reach the application server. Start the application and open http://localhost:8080/.'
+      ? 'Cannot reach the application server. Check your connection and confirm the hosted backend is running.'
       : loginError.message;
   }
 });
@@ -411,7 +424,7 @@ async function loadUsers() {
     users = await response.json();
     userTableBody.innerHTML = users.length ? users.map((user) => {
       const initials = escapeHtml(String(user.name || '?').split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase());
-      return `<div class="user-row-record"><div class="user-person"><span class="user-record-avatar">${initials}</span><strong>${escapeHtml(user.name)}</strong></div><span>${escapeHtml(user.emailId)}</span><span>${escapeHtml(user.phoneNumber || 'Not provided')}</span><span class="user-role">${escapeHtml(user.role)}</span><button class="user-action" data-user-id="${user.id}" aria-label="Delete ${escapeHtml(user.name)}">×</button></div>`;
+      return `<div class="user-row-record"><div class="user-person"><span class="user-record-avatar">${initials}</span><strong>${escapeHtml(user.name)}</strong></div><span>${escapeHtml(user.emailId)}</span><span>${escapeHtml(user.phoneNumber || 'Not provided')}</span><span class="user-role">${escapeHtml(user.role)}</span><div class="user-actions"><button type="button" class="user-edit" data-user-id="${user.id}">Edit</button><button class="user-action" data-user-id="${user.id}" aria-label="Delete ${escapeHtml(user.name)}">×</button></div></div>`;
     }).join('') : '<div class="lead-empty">No users added yet.</div>';
   } catch (error) {
     userTableBody.innerHTML = '<div class="lead-empty">Could not load users. Check that the server is running.</div>';
@@ -524,14 +537,21 @@ function closeUserModal() {
   userModal?.setAttribute('aria-hidden', 'true');
 }
 
-document.querySelector('.add-new-user')?.addEventListener('click', () => {
+function openUserForm(user = null) {
+  editingUserId = user?.id ?? null;
   userForm.reset();
-  document.querySelector('#user-title').textContent = 'Add new user';
+  for (const field of ['name', 'emailId', 'phoneNumber', 'role']) {
+    userForm.elements[field].value = user?.[field] || '';
+  }
+  userForm.elements.password.required = !user;
+  userForm.elements.password.placeholder = user ? 'Leave blank to keep current password' : 'Minimum 6 characters';
+  document.querySelector('#user-title').textContent = user ? 'Edit user' : 'Add new user';
   document.querySelector('.user-form-message').textContent = '';
   userModal?.classList.add('open');
   userModal?.setAttribute('aria-hidden', 'false');
   userForm.querySelector('[name="name"]')?.focus();
-});
+}
+document.querySelector('.add-new-user')?.addEventListener('click', () => openUserForm());
 document.querySelector('.user-modal-close')?.addEventListener('click', closeUserModal);
 document.querySelector('.user-cancel')?.addEventListener('click', closeUserModal);
 userModal?.addEventListener('click', (event) => { if (event.target === userModal) closeUserModal(); });
@@ -546,17 +566,16 @@ userForm?.addEventListener('submit', async (event) => {
   message.textContent = 'Saving user...';
   const data = Object.fromEntries(new FormData(userForm).entries());
   try {
-    const response = await fetch('/api/users', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    const response = await fetch(editingUserId === null ? '/api/users' : `/api/users/${editingUserId}`, { method: editingUserId === null ? 'POST' : 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
     if (!response.ok) {
       const details = await response.json().catch(() => null);
       throw new Error(details?.message || 'User could not be saved');
     }
     const savedUser = await response.json();
-    userForm.reset();
-    message.textContent = `${savedUser.name} was added.`;
-    AppNotice.success('User created successfully.');
+    AppNotice.success(editingUserId === null ? 'User created successfully.' : 'User updated successfully.');
+    closeUserModal();
     await loadUsers();
-    window.setTimeout(closeUserModal, 700);
+
   } catch (error) {
     message.textContent = error instanceof TypeError
       ? 'Cannot reach the application server. Open http://localhost:8080/ and try again.'
@@ -568,6 +587,12 @@ userForm?.addEventListener('submit', async (event) => {
 });
 
 userTableBody?.addEventListener('click', async (event) => {
+  const editButton = event.target.closest('.user-edit');
+  if (editButton) {
+    const user = users.find(item => String(item.id) === editButton.dataset.userId);
+    if (user) openUserForm(user);
+    return;
+  }
   const button = event.target.closest('.user-action');
   if (!button || !window.confirm('Delete this user?')) return;
   button.disabled = true;

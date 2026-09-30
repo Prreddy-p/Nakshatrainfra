@@ -29,6 +29,31 @@ class UserAccountPersistenceTest {
     @Autowired PasswordEncoder encoder;
 
     @Test
+    void editPreservesPasswordAndSupportsAdminRole() throws Exception {
+        String created = mvc.perform(post("/api/users").contentType("application/json")
+                .content(json.writeValueAsString(Map.of("name", "Editor", "emailId", "edit-user@example.com",
+                        "password", "Original@123", "role", "Manager"))))
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        long id = json.readTree(created).get("id").asLong();
+        String hash = users.findById(id).orElseThrow().getPassword();
+        mvc.perform(put("/api/users/" + id).contentType("application/json")
+                .content(json.writeValueAsString(Map.of("name", "Updated Admin", "emailId", "edited@example.com",
+                        "phoneNumber", "1234567890", "password", "", "role", "Admin"))))
+                .andExpect(status().isOk()).andExpect(jsonPath("name").value("Updated Admin"))
+                .andExpect(jsonPath("password").doesNotExist());
+        assertEquals(hash, users.findById(id).orElseThrow().getPassword());
+        mvc.perform(post("/api/auth/login").contentType("application/json")
+                .content(json.writeValueAsString(Map.of("username", "edited@example.com",
+                        "password", "Original@123", "role", "Admin"))))
+                .andExpect(status().isOk());
+        mvc.perform(put("/api/users/" + id).contentType("application/json")
+                .content(json.writeValueAsString(Map.of("name", "Updated Admin", "emailId", "edited@example.com",
+                        "password", "short", "role", "Admin"))))
+                .andExpect(status().isBadRequest());
+        assertEquals(hash, users.findById(id).orElseThrow().getPassword());
+    }
+
+    @Test
     void createdUserIsCommittedAndCanSignInWithoutExposingPassword() throws Exception {
         String email = "saved-user@example.com";
         String body = json.writeValueAsString(Map.of("name", "Saved User", "emailId", email,
