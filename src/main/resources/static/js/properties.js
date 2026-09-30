@@ -191,6 +191,7 @@ window.PropertiesPage = (() => {
   dialog.querySelector('.property-cancel').addEventListener('click', closeEditor);
   dialog.addEventListener('cancel', event => { if (busy) event.preventDefault(); });
   function open(event) {
+    window.SettingsPage?.close();
     event?.preventDefault(); closeLeadsPage(); closeUsersPage(); closeCustomersPage(); closePaymentsPage();
     overviewContent.style.display = 'none'; page.classList.add('active');
     document.querySelector('.breadcrumb strong').textContent = 'Properties';

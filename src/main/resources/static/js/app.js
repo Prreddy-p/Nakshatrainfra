@@ -14,6 +14,7 @@ const overviewContent = document.querySelector('.page-content');
 const leadTableBody = document.querySelector('#lead-table-body');
 const leadResultCount = document.querySelector('#lead-result-count');
 const userPage = document.querySelector('#users-page');
+const settingsPage = document.querySelector('#settings-page');
 const customerPage = document.querySelector('#customers-page');
 const userTableBody = document.querySelector('#user-table-body');
 const userModal = document.querySelector('.user-modal-backdrop');
@@ -317,6 +318,7 @@ function closePaymentsPage() {
   document.getElementById('payments-page').classList.remove('active');
 }
 function openPaymentsPage(event) {
+  window.SettingsPage?.close();
   window.PropertiesPage?.close();
   event?.preventDefault();
   closeLeadsPage(); closeUsersPage(); closeCustomersPage();
@@ -365,6 +367,7 @@ function renderLeads() {
 }
 
 function openLeadsPage(mode) {
+  window.SettingsPage?.close();
   window.PropertiesPage?.close();
   closePaymentsPage();
   const followupsOnly = mode === 'followups';
@@ -440,6 +443,7 @@ async function loadUsers() {
 }
 
 function openUsersPage(event) {
+  window.SettingsPage?.close();
   window.PropertiesPage?.close();
   closePaymentsPage();
   closeCustomersPage();
@@ -470,6 +474,7 @@ document.querySelector('.nav-item[href="#leads"]')?.addEventListener('click', (e
 });
 
 function openDashboard(event) {
+  window.SettingsPage?.close();
   window.PropertiesPage?.close();
   closePaymentsPage();
   event?.preventDefault();
@@ -489,12 +494,70 @@ document.querySelector('.brand-mark')?.addEventListener('click', openDashboard);
 
 document.querySelector('.nav-item[href="#users"]')?.addEventListener('click', openUsersPage);
 
+async function loadPasswordResetEmail() {
+  const input = document.querySelector('#password-reset-config-email');
+  const message = document.querySelector('#password-reset-email-message');
+  message.textContent = 'Loading saved sender address...';
+  try {
+    const response = await fetch('/api/settings/password-reset-email');
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.message || 'Settings could not be loaded.');
+    input.value = result.email || '';
+    message.textContent = '';
+  } catch (error) {
+    message.textContent = error.message || 'Settings could not be loaded.';
+  }
+}
+
+function openSettingsPage(event) {
+  window.PropertiesPage?.close();
+  closePaymentsPage(); closeLeadsPage(); closeUsersPage(); closeCustomersPage();
+  event?.preventDefault();
+  document.querySelector('.main-content').classList.remove('leads-mode', 'users-mode', 'customers-mode');
+  overviewContent.style.display = 'none';
+  settingsPage.classList.add('active');
+  document.querySelector('.breadcrumb strong').textContent = 'Settings';
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.getAttribute('href') === '#settings'));
+  sessionStorage.setItem('realEstatePage', 'settings');
+  sidebar?.classList.remove('open');
+  window.scrollTo(0, 0);
+  loadPasswordResetEmail();
+}
+
+function closeSettingsPage() {
+  settingsPage?.classList.remove('active');
+  if (sessionStorage.getItem('realEstatePage') === 'settings') sessionStorage.setItem('realEstatePage', 'overview');
+}
+
+window.SettingsPage = { close: closeSettingsPage };
+document.querySelector('.nav-item[href="#settings"]')?.addEventListener('click', openSettingsPage);
+document.querySelector('#password-reset-email-form')?.addEventListener('submit', async event => {
+  event.preventDefault();
+  const button = document.querySelector('#save-password-reset-email');
+  const message = document.querySelector('#password-reset-email-message');
+  const email = document.querySelector('#password-reset-config-email').value.trim();
+  button.disabled = true;
+  message.textContent = 'Saving...';
+  try {
+    const response = await fetch('/api/settings/password-reset-email', {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.message || 'Settings could not be saved.');
+    message.textContent = 'Password reset sender email saved.';
+    AppNotice.success('Password reset sender email saved.');
+  } catch (error) {
+    message.textContent = error.message || 'Settings could not be saved.';
+  } finally { button.disabled = false; }
+});
+
 function closeCustomersPage() {
   customerPage.classList.remove('active');
   document.querySelector('.main-content').classList.remove('customers-mode');
 }
 
 function openCustomersPage(event) {
+  window.SettingsPage?.close();
   window.PropertiesPage?.close();
   closePaymentsPage();
   event?.preventDefault();
@@ -946,6 +1009,7 @@ if (savedWorkspaceUser) {
     if (savedPage === 'customers') openCustomersPage();
     if (savedPage === 'payments') openPaymentsPage();
     if (savedPage === 'properties') window.PropertiesPage.open();
+    if (savedPage === 'settings') openSettingsPage();
   }
 }
 

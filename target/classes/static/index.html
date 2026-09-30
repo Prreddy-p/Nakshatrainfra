@@ -83,7 +83,6 @@
         <span data-manager-nav class="nav-label second-label">Partners &amp; admin</span>
         <a data-manager-nav class="nav-item" href="#brokers"><span class="nav-icon">◇</span>Brokers &amp; agents</a>
         <a data-manager-nav class="nav-item" href="#users"><span class="nav-icon">◉</span>User management</a>
-        <a data-manager-nav class="nav-item" href="#contacts"><span class="nav-icon">◎</span>Contacts</a>
         <a data-manager-nav class="nav-item" href="#reports"><span class="nav-icon">▥</span>Reports</a>
         <a data-manager-nav class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a>
         <a class="nav-item logout-link" href="#logout"><span class="nav-icon">↪</span>Logout</a>
@@ -170,6 +169,15 @@
       <section class="user-page" id="users-page" aria-labelledby="users-page-title">
         <div class="user-page-header"><div><p class="eyebrow">ADMINISTRATION / USERS</p><h1 id="users-page-title">User management</h1><p class="subhead">Manage the people who work in your Nakshatra Infra workspace.</p></div><button class="quick-add add-new-user"><span>+</span> Add new user</button></div>
         <div class="user-table-panel"><div class="user-table-head"><span>USER</span><span>EMAIL ID</span><span>PHONE NUMBER</span><span>ROLE</span><span>ACTION</span></div><div class="user-table-body" id="user-table-body"><div class="lead-empty">Loading users...</div></div></div>
+      </section>
+      <section class="user-page" id="settings-page" aria-labelledby="settings-page-title">
+        <div class="user-page-header"><div><p class="eyebrow">ADMINISTRATION / SETTINGS</p><h1 id="settings-page-title">Settings</h1><p class="subhead">Configure the sender address used for password reset emails.</p></div></div>
+        <form id="password-reset-email-form" class="settings-form">
+          <label for="password-reset-config-email">Password reset config email</label>
+          <input id="password-reset-config-email" name="email" type="email" maxlength="320" autocomplete="email" placeholder="name@example.com" required>
+          <p class="settings-help">This address must be authorized by your configured mail provider. SMTP credentials are managed by the application administrator.</p>
+          <div class="settings-form-footer"><span id="password-reset-email-message" aria-live="polite"></span><button type="submit" class="login-button" id="save-password-reset-email">Save settings</button></div>
+        </form>
       </section>
     </main>
   </div>

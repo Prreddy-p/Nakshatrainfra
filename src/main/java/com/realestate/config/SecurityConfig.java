@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/api/auth/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/public/property-photos", "/api/public/property-photos/*").permitAll()
                         .requestMatchers("/api/users/**").hasAnyRole("Admin", "Manager")
+                        .requestMatchers("/api/settings/**").hasAnyRole("Admin", "Manager")
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll())
                 .build();
