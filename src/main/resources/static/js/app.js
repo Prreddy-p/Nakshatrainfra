@@ -501,12 +501,18 @@ async function loadPasswordResetEmail() {
   try {
     const response = await fetch('/api/settings/password-reset-email');
     const result = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(result.message || 'Settings could not be loaded.');
+    if (!response.ok) throw new Error(settingsRequestError(response, result, 'loaded'));
     input.value = result.email || '';
     message.textContent = '';
   } catch (error) {
     message.textContent = error.message || 'Settings could not be loaded.';
   }
+}
+
+function settingsRequestError(response, result, action) {
+  if (response.status === 404) return 'The running app does not have the settings API yet. Restart the local server or deploy the latest backend code, then try again.';
+  if (response.status === 401 || response.status === 403) return 'You are not authorized to change this setting. Sign in as an Admin or Manager.';
+  return result.message || `Settings could not be ${action} (HTTP ${response.status}).`;
 }
 
 function openSettingsPage(event) {
@@ -543,7 +549,7 @@ document.querySelector('#password-reset-email-form')?.addEventListener('submit',
       method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email })
     });
     const result = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(result.message || 'Settings could not be saved.');
+    if (!response.ok) throw new Error(settingsRequestError(response, result, 'saved'));
     message.textContent = 'Password reset sender email saved.';
     AppNotice.success('Password reset sender email saved.');
   } catch (error) {
