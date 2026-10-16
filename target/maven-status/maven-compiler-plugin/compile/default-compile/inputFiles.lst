@@ -1,5 +1,6 @@
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\config\ApiExceptionHandler.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\config\DemoDataConfig.java
+C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\config\RailwayPersistenceConfig.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\config\SecurityConfig.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\controller\AuthController.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\controller\BookingController.java
@@ -13,6 +14,7 @@ C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\controller\Pas
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\controller\PropertyAttachmentController.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\controller\PropertyController.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\controller\PublicPropertyPhotoController.java
+C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\controller\SettingsController.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\controller\UserAccountController.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\dto\AuthResponse.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\dto\DevOtpResponse.java
@@ -28,6 +30,7 @@ C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\model\Document
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\model\Lead.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\model\OwnedRecord.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\model\PasswordReset.java
+C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\model\PasswordResetEmailSetting.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\model\Payment.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\model\Property.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\model\PropertyAttachment.java
@@ -38,6 +41,7 @@ C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\repository\Boo
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\repository\CustomerRepository.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\repository\DocumentRepository.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\repository\LeadRepository.java
+C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\repository\PasswordResetEmailSettingRepository.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\repository\PasswordResetRepository.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\repository\PaymentRepository.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\repository\PropertyAttachmentRepository.java
@@ -52,6 +56,7 @@ C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\security\Recor
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\service\BookingService.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\service\LeadPaymentService.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\service\LeadService.java
+C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\service\PasswordResetEmailSettings.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\service\PasswordResetMailer.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\service\PasswordResetService.java
 C:\Users\monik\OneDrive\Desktop\Test\src\main\java\com\realestate\service\PropertyAttachmentService.java
