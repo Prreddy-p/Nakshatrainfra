@@ -18,18 +18,23 @@ restarts and deployments. Do not run tests against the application database.
    copy the database after a clean shutdown while the current storage remains
    accessible. Do not copy an actively written `.mv.db` file as a backup.
 3. Store the backup outside the deployment container and verify it can restore.
-4. If using the default `./data` path with Railway's `/app` working directory,
-   attach a persistent volume at `/app/data`. Restore the existing database onto
-   that volume before starting the application. A new volume does not migrate
-   existing files and can hide files previously present at its mount path.
-5. Set `REAL_ESTATE_DATA_DIR=/app/data` only after the existing database has been
-   safely migrated there. If `REAL_ESTATE_DB_URL` is set, it overrides this setting;
-   confirm it points to the intended persistent database. Existing external MySQL
-   databases should keep their current connection configuration.
+4. Attach a persistent Railway volume at `/app/data`. Restore the existing
+   database onto that volume before starting the application. A new volume does
+   not migrate existing files and can hide files previously present at its mount
+   path.
+5. By default, the app uses Railway's `RAILWAY_VOLUME_MOUNT_PATH` for H2 when
+   Railway provides it. If `REAL_ESTATE_DATA_DIR` is explicitly set, it takes
+   precedence and must match the volume mount path. If `REAL_ESTATE_DB_URL` is
+   set, it overrides both; confirm it points to the intended persistent database.
+   Existing external MySQL databases should keep their current connection
+   configuration.
 6. Enable volume/database backups. Verify existing users and record counts before
    and after a controlled restart and deployment.
 
-Railway storage configuration has not been changed by these repository edits.
+The app now refuses to start on Railway with a file-based H2 database and no
+attached Railway volume, preventing a redeploy from silently coming up with an
+empty database. This safeguard cannot restore or migrate the existing database;
+attach the volume and restore the backup first.
 Reference: https://docs.railway.com/volumes
 Backups: https://docs.railway.com/volumes/backups
 

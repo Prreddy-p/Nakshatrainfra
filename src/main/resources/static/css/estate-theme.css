@@ -28,6 +28,7 @@ body { background:var(--canvas); color:var(--ink); }
 .nav-item:hover { background:#ffffff18; color:#fff7e8; }
 .nav-item.active { background:linear-gradient(100deg,#3b7054,#29573e); border-color:#c6af733d; color:#f6e6bd; box-shadow:inset 3px 0 #d7b779; }
 .nav-count { background:#ffffff20; color:#e1ebdf; }
+.nav-item .nav-count { display:inline-flex; min-width:20px; height:20px; align-items:center; justify-content:center; padding:0 6px; border-radius:999px; }
 .nav-count.warning { background:#b7984b2b; color:#f1d69d; }
 .help-card { background:#ffffff07; border:1px solid #ffffff16; border-radius:12px; }
 .sidebar-footer { border-color:#ffffff15; }
