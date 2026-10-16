@@ -509,6 +509,22 @@ async function loadPasswordResetEmail() {
   }
 }
 
+async function loadLoginGallerySetting() {
+  const checkbox = document.querySelector('#login-gallery-enabled');
+  const message = document.querySelector('#login-gallery-setting-message');
+  checkbox.disabled = true;
+  message.textContent = 'Loading saved setting...';
+  try {
+    const response = await fetch('/api/settings/login-gallery');
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(settingsRequestError(response, result, 'loaded'));
+    checkbox.checked = Boolean(result.enabled);
+    message.textContent = '';
+  } catch (error) {
+    message.textContent = error.message || 'Login page image setting could not be loaded.';
+  } finally { checkbox.disabled = false; }
+}
+
 function settingsRequestError(response, result, action) {
   if (response.status === 404) return 'The running app does not have the settings API yet. Restart the local server or deploy the latest backend code, then try again.';
   if (response.status === 401 || response.status === 403) return 'You are not authorized to change this setting. Sign in as an Admin or Manager.';
@@ -528,6 +544,7 @@ function openSettingsPage(event) {
   sidebar?.classList.remove('open');
   window.scrollTo(0, 0);
   loadPasswordResetEmail();
+  loadLoginGallerySetting();
 }
 
 function closeSettingsPage() {
@@ -555,6 +572,31 @@ document.querySelector('#password-reset-email-form')?.addEventListener('submit',
   } catch (error) {
     message.textContent = error.message || 'Settings could not be saved.';
   } finally { button.disabled = false; }
+});
+
+document.querySelector('#login-gallery-setting-form')?.addEventListener('submit', async event => {
+  event.preventDefault();
+  const checkbox = document.querySelector('#login-gallery-enabled');
+  const button = document.querySelector('#save-login-gallery-setting');
+  const message = document.querySelector('#login-gallery-setting-message');
+  checkbox.disabled = true;
+  button.disabled = true;
+  message.textContent = 'Saving...';
+  try {
+    const response = await fetch('/api/settings/login-gallery', {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ enabled: checkbox.checked })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(settingsRequestError(response, result, 'saved'));
+    message.textContent = result.enabled ? 'Login page images are on.' : 'Login page images are off.';
+    AppNotice.success('Login page image setting saved.');
+  } catch (error) {
+    message.textContent = error.message || 'Login page image setting could not be saved.';
+  } finally {
+    checkbox.disabled = false;
+    button.disabled = false;
+  }
 });
 
 function closeCustomersPage() {

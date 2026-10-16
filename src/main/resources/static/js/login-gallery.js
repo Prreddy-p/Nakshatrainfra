@@ -2,6 +2,12 @@
   const gallery = document.getElementById('login-gallery');
   const frame = document.getElementById('login-photo-grid');
   try {
+    const settingResponse = await fetch('/api/public/settings/login-gallery');
+    if (!settingResponse.ok) return;
+    const setting = await settingResponse.json();
+    if (!setting.enabled) return;
+    document.getElementById('login-screen').classList.add('show-login-images');
+
     const response = await fetch('/api/public/property-photos');
     if (!response.ok) return;
     const photos = await response.json();

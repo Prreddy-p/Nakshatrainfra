@@ -28,7 +28,7 @@ public class SecurityConfig {
                     .accessDeniedHandler((request, response, error) -> response.sendError(403)))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/api/auth/**").permitAll()
-                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/public/property-photos", "/api/public/property-photos/*").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/public/property-photos", "/api/public/property-photos/*", "/api/public/settings/login-gallery").permitAll()
                         .requestMatchers("/api/users/**").hasAnyRole("Admin", "Manager")
                         .requestMatchers("/api/settings/**").hasAnyRole("Admin", "Manager")
                         .requestMatchers("/api/**").authenticated()

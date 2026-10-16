@@ -171,7 +171,14 @@
         <div class="user-table-panel"><div class="user-table-head"><span>USER</span><span>EMAIL ID</span><span>PHONE NUMBER</span><span>ROLE</span><span>ACTION</span></div><div class="user-table-body" id="user-table-body"><div class="lead-empty">Loading users...</div></div></div>
       </section>
       <section class="user-page" id="settings-page" aria-labelledby="settings-page-title">
-        <div class="user-page-header"><div><p class="eyebrow">ADMINISTRATION / SETTINGS</p><h1 id="settings-page-title">Settings</h1><p class="subhead">Configure the sender address used for password reset emails.</p></div></div>
+        <div class="user-page-header"><div><p class="eyebrow">ADMINISTRATION / SETTINGS</p><h1 id="settings-page-title">Settings</h1><p class="subhead">Manage login page images and password reset email settings.</p></div></div>
+        <form id="login-gallery-setting-form" class="settings-form settings-form-spaced">
+          <label class="settings-toggle" for="login-gallery-enabled">
+            <span><strong>Show property images on login page</strong><small>Display the property photo carousel and skyline artwork before sign-in.</small></span>
+            <input id="login-gallery-enabled" name="enabled" type="checkbox">
+          </label>
+          <div class="settings-form-footer"><span id="login-gallery-setting-message" aria-live="polite"></span><button type="submit" class="login-button" id="save-login-gallery-setting">Save setting</button></div>
+        </form>
         <form id="password-reset-email-form" class="settings-form">
           <label for="password-reset-config-email">Password reset config email</label>
           <input id="password-reset-config-email" name="email" type="email" maxlength="320" autocomplete="email" placeholder="name@example.com" required>
@@ -265,11 +272,11 @@
       </form>
     </section>
   </div>
-  <script src="js/login-gallery.js"></script>
   <script src="js/notifications.js"></script>
   <script src="js/payments.js"></script>
   <script src="js/properties.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/login-gallery.js"></script>
   <script src="js/records.js"></script>
 </body>
 </html>
